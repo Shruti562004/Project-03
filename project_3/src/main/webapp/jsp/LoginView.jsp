@@ -46,7 +46,7 @@ i.css {
 }
 
 .p4 {
-	background-image: url('<%=ORSView.APP_CONTEXT%>/img/loginhere.jpg');
+	background-image: url('<%=ORSView.APP_CONTEXT%>/img/img1.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed; 
 	background-size: cover;

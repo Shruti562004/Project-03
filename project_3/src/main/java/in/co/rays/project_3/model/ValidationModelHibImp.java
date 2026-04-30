@@ -119,7 +119,7 @@ public class ValidationModelHibImp implements ValidationModelInt {
 
 	@Override
 	public ValidationDTO findByPK(long pk) throws ApplicationException {
-		Sess
+	
 		return null;
 	}
 
