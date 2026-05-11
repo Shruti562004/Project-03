@@ -229,6 +229,69 @@
 							class="fa fa-user-friends"></i>Notification  List</a>
 					</div></li>
 					
+					<li class="nav-item dropdown" style="padding-left: 5px"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Cache</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.CACHE_CTL%>"><i
+							class="fa fa-user-tie"></i>Add Cache</a> <a class="dropdown-item"
+							href="<%=ORSView.CACHE_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Cache  List</a>
+					</div></li>
+			 
+						<li class="nav-item dropdown" style="padding-left: 5px"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Appointment</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.APPOINTMENT_CTL%>"><i
+							class="fa fa-user-tie"></i>Add Appointment</a> <a class="dropdown-item"
+							href="<%=ORSView.APPOINTMENT_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Appointment  List</a>
+					</div>
+				
+					<li class="nav-item dropdown" style="padding-left: 5px"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Consumer</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.CONSUMER_CTL%>"><i
+							class="fa fa-user-tie"></i>Add Consumer</a> <a class="dropdown-item"
+							href="<%=ORSView.CONSUMER_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Consumer  List</a>
+					</div></li>
+					
+				
+					<li class="nav-item dropdown" style="padding-left: 5px"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Session</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.SESSION_CTL%>"><i
+							class="fa fa-user-tie"></i>Add Session</a> <a class="dropdown-item"
+							href="<%=ORSView.SESSION_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Session  List</a>
+					</div>
+					</li>
+					
+					<li class="nav-item dropdown" style="padding-left: 5px"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Placement</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.PLACEMENT_CTL%>"><i
+							class="fa fa-user-tie"></i>Add Placement</a> <a class="dropdown-item"
+							href="<%=ORSView.PLACEMENT_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Placement  List</a>
+					</div></li>
+					
+				
 				<%
 					}
 					}

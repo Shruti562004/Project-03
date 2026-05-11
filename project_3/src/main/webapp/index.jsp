@@ -10,7 +10,7 @@
 }
 
 body {
-	background-image: url('img/white.png');
+	background-image: url('img/landscape.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 }

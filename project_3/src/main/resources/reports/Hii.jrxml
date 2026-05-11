@@ -59,12 +59,13 @@
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.HorizontalRowLayout"/>
 			<staticText>
-				<reportElement x="190" y="0" width="280" height="66" uuid="307d3f1c-0550-451f-ad9e-67aecc46fe95"/>
+				<reportElement x="0" y="0" width="555" height="79" backcolor="#2AE879" uuid="307d3f1c-0550-451f-ad9e-67aecc46fe95"/>
 				<textElement>
 					<font size="26"/>
 				</textElement>
-				<text><![CDATA[Rays Technology]]></text>
+				<text><![CDATA[                    Rays Technology]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -118,7 +119,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="81" height="30" uuid="b1cbde9d-324b-4542-b11e-8f0f05c752df">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9262b731-5eaf-4c74-9b20-7e6054def987"/>
@@ -164,12 +165,14 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="35" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="61" splitType="Stretch"/>
 	</summary>
 </jasperReport>

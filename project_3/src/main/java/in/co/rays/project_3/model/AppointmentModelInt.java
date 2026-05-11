@@ -23,7 +23,7 @@ public interface AppointmentModelInt {
 
 	public List search(AppointmentDTO dto, int pageNo, int pageSize) throws ApplicationException;
 
-	public CateringDTO findByPK(long pk) throws ApplicationException;
+	public AppointmentDTO findByPK(long pk) throws ApplicationException;
 
-	public CateringDTO findByName(String name) throws ApplicationException;
+	public AppointmentDTO findByName(String name) throws ApplicationException;
 }

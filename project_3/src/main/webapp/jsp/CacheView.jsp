@@ -1,7 +1,6 @@
-<%@page import="in.co.rays.project_3.controller.NotificationCtl"%>
 <%@page import="in.co.rays.project_3.util.HTMLUtility"%>
 <%@page import="java.util.HashMap"%>
-<%@page import="in.co.rays.project_3.controller.CourseCtl"%>
+<%@page import="in.co.rays.project_3.controller.CacheCtl"%>
 <%@page import="in.co.rays.project_3.util.DataUtility"%>
 <%@page import="in.co.rays.project_3.util.ServletUtility"%>
 <%@page import="in.co.rays.project_3.controller.ORSView"%>
@@ -11,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Course view</title>
+<title>Cache view</title>
 <style type="text/css">
 i.css {
 	border: 2px solid #8080803b;
@@ -36,11 +35,11 @@ i.css {
 		<%@include file="Header.jsp"%>
 	</div>
 	<div>
-		<jsp:useBean id="dto" class="in.co.rays.project_3.dto.NotificationDTO"
+		<jsp:useBean id="dto" class="in.co.rays.project_3.dto.CacheDTO"
 			scope="request"></jsp:useBean>
 
 		<main>
-		<form action="<%=ORSView.NOTIFICATION_CTL%>" method="post">
+		<form action="<%=ORSView.CACHE_CTL%>" method="post">
 
 			<div class="row pt-3 pb-3">
 				<!-- Grid column -->
@@ -54,11 +53,11 @@ i.css {
 								if (dto.getId() != null) {
 							%>
 							<h3 class="text-center default-text text-primary">Update
-								Notification</h3>
+								Cache</h3>
 							<%
 								} else {
 							%>
-							<h3 class="text-center default-text text-primary">Add Notification</h3>
+							<h3 class="text-center default-text text-primary">Add Cache</h3>
 							<%
 								}
 							%>
@@ -134,7 +133,7 @@ i.css {
 								</div>
 								<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("name", request)%></font></br>
 
-								<span class="pl-sm-5"><b>Type</b><span
+								<span class="pl-sm-5"><b>Value</b><span
 									style="color: red;">*</span></span></br>
 								<div class="col-sm-12">
 									<div class="input-group">
@@ -151,12 +150,12 @@ i.css {
 											map.put("3 Year", "3 Year");
 											map.put("4 Year", "4 Year");
 											map.put("5 Year", "5 Year");
-											String HtmlList = HTMLUtility.getList("type", dto.getType(), map);
+											String HtmlList = HTMLUtility.getList("value", dto.getValue(), map);
 										%>
 										<%=HtmlList%></div>
 
 								</div>
-								<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("type", request)%></font></br>
+								<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("value", request)%></font></br>
 
 
 								<span class="pl-sm-5"><b>Status</b><span
@@ -169,7 +168,7 @@ i.css {
 											</div>
 										</div>
 										<textarea name="status" placeholder="Enter status"
-											class="form-control" rows="5" cols="5"><%=DataUtility.getStringData(dto.getStatus())%></textarea>
+										--	class="form-control" rows="5" cols="5"><%=DataUtility.getStringData(dto.getStatus())%></textarea>
 
 									</div>
 									<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("status", request)%></font></br>
@@ -182,9 +181,9 @@ i.css {
 
 									<input type="submit" name="operation"
 										class="btn btn-success btn-md" style="font-size: 17px"
-										value="<%=CourseCtl.OP_UPDATE%>"> <input type="submit"
+										value="<%=CacheCtl.OP_UPDATE%>"> <input type="submit"
 										name="operation" class="btn btn-warning btn-md"
-										style="font-size: 17px" value="<%=NotificationCtl.OP_CANCEL%>">
+										style="font-size: 17px" value="<%=CacheCtl.OP_CANCEL%>">
 								</div>
 								<%
 									} else {
@@ -193,9 +192,9 @@ i.css {
 
 									<input type="submit" name="operation"
 										class="btn btn-success btn-md" style="font-size: 17px"
-										value="<%=CourseCtl.OP_SAVE%>"> <input type="submit"
+										value="<%=CacheCtl.OP_SAVE%>"> <input type="submit"
 										name="operation" class="btn btn-warning btn-md"
-										style="font-size: 17px" value="<%=NotificationCtl.OP_RESET%>">
+										style="font-size: 17px" value="<%=CacheCtl.OP_RESET%>">
 								</div>
 								<%
 									}

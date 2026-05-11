@@ -8,23 +8,23 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import in.co.rays.project_3.dto.AppointmentDTO;
-import in.co.rays.project_3.dto.CateringDTO;
+import in.co.rays.project_3.dto.SessionDTO;
+
 import in.co.rays.project_3.exception.ApplicationException;
 import in.co.rays.project_3.exception.DuplicateRecordException;
 import in.co.rays.project_3.util.HibDataSource;
 
-public class AppointmentModelHibImp  implements AppointmentModelInt{
+public class SessionModelHibImp  implements SessionModelInt{
 	
-	public  long add(AppointmentDTO dto) throws ApplicationException {
+	public  long add(SessionDTO dto) throws ApplicationException, DuplicateRecordException {
 		Session session=null;
 		Transaction tx=null;
 		long pk=0;
 		
-		/*CateringDTO existDto=findByName(dto.getVendorName());
+		SessionDTO existDto=findByName(dto.getName());
 		if(existDto!=null) {
-			throw new DuplicateElementException("vendor already exist");
-		}*/
+			throw new DuplicateRecordException("name already exist");
+		}
 		
 		session=HibDataSource.getSession();
 		try {
@@ -40,7 +40,7 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 				tx.rollback();
 			}
 			e.printStackTrace();
-			throw new ApplicationException("Exception in Catering add " + e.getMessage());
+			throw new ApplicationException("Exception in Session add " + e.getMessage());
 
 		} finally {
 			session.close();
@@ -51,7 +51,7 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 
 
 	@Override
-	public void delete(AppointmentDTO dto) throws ApplicationException {
+	public void delete(SessionDTO dto) throws ApplicationException {
 		Session session=null;
 		Transaction tx=null;
 		
@@ -69,7 +69,7 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 				tx.rollback();
 			}
 			e.printStackTrace();
-			throw new ApplicationException("Exception in Catering add " + e.getMessage());
+			throw new ApplicationException("Exception in Session add " + e.getMessage());
 
 		} finally {
 			session.close();
@@ -78,7 +78,7 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 	}
 
 	@Override
-	public void update(AppointmentDTO dto) throws ApplicationException, DuplicateRecordException {
+	public void update(SessionDTO dto) throws ApplicationException, DuplicateRecordException {
 		Session session=null;
 		Transaction tx=null;
 		
@@ -96,7 +96,7 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 				tx.rollback();
 			}
 			e.printStackTrace();
-			throw new ApplicationException("Exception in Catering add " + e.getMessage());
+			throw new ApplicationException("Exception in Session add " + e.getMessage());
 
 		} finally {
 			session.close();
@@ -108,7 +108,7 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 	@Override
 	public List list() throws ApplicationException {
 		
-		return list(0,0);
+		return list(0 , 0);
 	}
 
 	@Override
@@ -117,7 +117,7 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 		List list=null;
 		try {
 			session=HibDataSource.getSession();
-			Criteria criteria=session.createCriteria(AppointmentDTO.class);
+			Criteria criteria=session.createCriteria(SessionDTO.class);
 			if(pageSize>0) {
 				pageNo=(pageNo-1)*pageSize;
 				criteria.setFirstResult(pageNo);
@@ -132,7 +132,7 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 
 			
 			e.printStackTrace();
-			throw new ApplicationException("Exception in Catering add " + e.getMessage());
+			throw new ApplicationException("Exception in Session add " + e.getMessage());
 
 		} finally {
 			session.close();
@@ -142,32 +142,36 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 	}
 
 	@Override
-	public List search(AppointmentDTO dto) throws ApplicationException {
+	public List search(SessionDTO dto) throws ApplicationException {
 		// TODO Auto-generated method stub
 		return search(dto,0,0);
 	}
 
 	@Override
-	public List<AppointmentDTO> search(AppointmentDTO dto, int pageNo, int pageSize)
+	public List<SessionDTO> search(SessionDTO dto, int pageNo, int pageSize)
 	        throws ApplicationException {
 
 	    Session session = null;
-	    List<AppointmentDTO> list = null;
+	    List<SessionDTO> list = null;
 
 	    try {
 	        session = HibDataSource.getSession();
 
-	        Criteria criteria = session.createCriteria(AppointmentDTO.class);
+	        Criteria criteria = session.createCriteria(SessionDTO.class);
 
 	        if (dto != null) {
 
 	            if (dto.getId() !=null && dto.getId() > 0) {
 	                criteria.add(Restrictions.eq("id", dto.getId()));
 	            }
-
-	            if (dto.getName() != null && dto.getName().length() > 0) {
-	                criteria.add(Restrictions.like("name", dto.getName() + "%")); // ✅ case-insensitive
+	            if (dto.getCode() != null && dto.getCode().length() > 0) {
+	                criteria.add(Restrictions.like("code", dto.getCode() + "%")); // ✅ case-insensitive
 	            }
+
+	            if (dto.getLoginTime() != null && dto.getLoginTime().getDate() > 0) {
+					criteria.add(Restrictions.eq("loginTime", dto.getLoginTime()));
+				}
+	           
 
 	            if (dto.getStatus() != null && dto.getStatus().length() > 0) {
 	                criteria.add(Restrictions.like("status", dto.getStatus() + "%"));
@@ -198,19 +202,19 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 	}
 
 	@Override
-	public AppointmentDTO findByPK(long pk) throws ApplicationException {
+	public SessionDTO findByPK(long pk) throws ApplicationException {
 		Session session=null;
-		AppointmentDTO dto=null;
+		SessionDTO dto=null;
 		try {
 			session=HibDataSource.getSession();
-			dto=(AppointmentDTO) session.get(AppointmentDTO.class, pk);
+			dto=(SessionDTO) session.get(SessionDTO.class, pk);
 			
 		}
 		catch (HibernateException e) {
 
 		
 			e.printStackTrace();
-			throw new ApplicationException("Exception in Catering add " + e.getMessage());
+			throw new ApplicationException("Exception in Session add " + e.getMessage());
 
 		} finally {
 			session.close();
@@ -221,16 +225,16 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 	}
 
 	@Override
-	public AppointmentDTO findByName(String name) throws ApplicationException {
+	public SessionDTO findByName(String name) throws ApplicationException {
 		Session session=null;
-		AppointmentDTO dto=null;
+		SessionDTO dto=null;
 		try {
 			session=HibDataSource.getSession();
-			Criteria criteria = session.createCriteria(AppointmentDTO.class);
+			Criteria criteria = session.createCriteria(SessionDTO.class);
 			criteria.add(Restrictions.eq("name",name));
 			List list=criteria.list();
 			if(list.size()>0) {
-			dto=	(AppointmentDTO) list.get(0);
+			dto=	(SessionDTO) list.get(0);
 			}
 		}
 			
@@ -238,7 +242,7 @@ public class AppointmentModelHibImp  implements AppointmentModelInt{
 
 				
 				e.printStackTrace();
-				throw new ApplicationException("Exception in Catering add " + e.getMessage());
+				throw new ApplicationException("Exception in Session add " + e.getMessage());
 
 			} finally {
 				session.close();

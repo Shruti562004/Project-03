@@ -1,12 +1,12 @@
-<%@page import="in.co.rays.project_3.controller.NotificationCtl"%>
+<%@page import="in.co.rays.project_3.controller.PlacementCtl"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="in.co.rays.project_3.util.HTMLUtility"%>
-<%@page import="in.co.rays.project_3.dto.NotificationDTO"%>
+<%@page import="in.co.rays.project_3.dto.PlacementDTO"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="in.co.rays.project_3.util.DataUtility"%>
 <%@page import="java.util.List"%>
 <%@page import="in.co.rays.project_3.util.ServletUtility"%>
-<%@page import="in.co.rays.project_3.controller.NotificationListCtl"%>
+<%@page import="in.co.rays.project_3.controller.PlacementListCtl"%>
 <%@page import="in.co.rays.project_3.controller.ORSView"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -42,12 +42,12 @@ background-repeat: no-repeat;
 		<%@include file="Header.jsp"%>
 	</div>
 	<div>
-		<form action="<%=ORSView.NOTIFICATION_LIST_CTL%>" method="post">
+		<form action="<%=ORSView.PLACEMENT_LIST_CTL%>" method="post">
 
 
 
 
-			<jsp:useBean id="dto" class="in.co.rays.project_3.dto.NotificationDTO"
+			<jsp:useBean id="dto" class="in.co.rays.project_3.dto.PlacementDTO"
 				scope="request"></jsp:useBean>
 			<%
 				List codeList = (List) request.getAttribute("codeList");
@@ -58,12 +58,12 @@ background-repeat: no-repeat;
 				int index = ((pageNo - 1) * pageSize) + 1;
 				int nextPageSize = DataUtility.getInt(request.getAttribute("nextListSize").toString());
 				List list = ServletUtility.getList(request);
-				Iterator<NotificationDTO> it = list.iterator();
+				Iterator<PlacementDTO> it = list.iterator();
 				if (list.size() != 0) {
 			%>
 			<center>
 				<h1 class="text-light font-weight-bold pt-2"><font color="black">
-					Notification List</h1></font>
+					Placement List</h1></font>
 				<center>
 
 					<div class="row">
@@ -107,13 +107,13 @@ background-repeat: no-repeat;
 
 						<div class="col-sm-2"></div>
 						<div class="col-sm-3">
-					<%=HTMLUtility.getList("code", String.valueOf(dto.getCode()), codeList)%>
+					
 				</div>
 						<div class="col-sm-3">
 						
-							<input class="form-control" type="text" name="code"
-							placeholder="Enter code" class="p1"
-							value="<%=ServletUtility.getParameter("code", request)%>">
+							<input class="form-control" type="text" name="name"
+							placeholder="Enter name" class="p1"
+							value="<%=ServletUtility.getParameter("name", request)%>">
 							
 							
 						</div>
@@ -121,10 +121,10 @@ background-repeat: no-repeat;
 						<div class="col-sm-2">
 							<input type="submit" class="btn btn-primary btn-md"
 								style="font-size: 17px" name="operation"
-								value="<%=NotificationListCtl.OP_SEARCH%>">&emsp; <input
+								value="<%=PlacementListCtl.OP_SEARCH%>">&emsp; <input
 								type="submit" class="btn btn-dark btn-md"
 								style="font-size: 17px" name="operation"
-								value="<%=NotificationListCtl.OP_RESET%>">
+								value="<%=PlacementListCtl.OP_RESET%>">
 						</div>
 
 						<div class="col-sm-2"></div>
@@ -145,10 +145,11 @@ background-repeat: no-repeat;
 									<th width="10%"><input type="checkbox" id="select_all"
 										name="Select" class="text"> Select All</th>
 									<th class="text">S.NO</th>
-									<th class="text">Code</th>
+								
 									<th class="text">Name</th>
-									<th class="text">Value</th>
-									<th class="text">Status</th>
+									<th class="text">Coordinates</th>
+									<th class="text">Scale</th>\
+									<th class="text">Rotation</th>
 									<th class="text">Edit</th>
 								</tr>
 							</thead>
@@ -162,11 +163,12 @@ background-repeat: no-repeat;
 									<td align="center"><input type="checkbox" class="checkbox"
 										name="ids" value="<%=dto.getId()%>"></td>
 									<td align="center"><%=index++%></td>
-									<td align="center"><%=dto.getCode()%></td>
+									
 									<td align="center"><%=dto.getName()%></td>
-									<td align="center"><%=dto.getValue()%></td>
-										<td align="center"><%=dto.getStatus()%></td>
-									<td align="center"><a href="NotificationCtl?id=<%=dto.getId()%>">Edit</a></td>
+									<td align="center"><%=dto.getCoordinates()%></td>
+										<td align="center"><%=dto.getScale()%></td>
+											<td align="center"><%=dto.getRotation()%></td>
+									<td align="center"><a href="PlacementCtl?id=<%=dto.getId()%>">Edit</a></td>
 								</tr>
 							</tbody>
 							<%
@@ -180,18 +182,18 @@ background-repeat: no-repeat;
 						<tr>
 							<td><input type="submit" name="operation"
 								class="btn btn-secondary btn-md" style="font-size: 17px"
-								value="<%=NotificationListCtl.OP_PREVIOUS%>"
+								value="<%=PlacementListCtl.OP_PREVIOUS%>"
 								<%=pageNo > 1 ? "" : "disabled"%>></td>
 							<td><input type="submit" name="operation"
 								class="btn btn-primary btn-md" style="font-size: 17px"
-								value="<%=NotificationCtl.OP_NEW%>"></td>
+								value="<%=PlacementCtl.OP_NEW%>"></td>
 							<td><input type="submit" name="operation"
 								class="btn btn-danger btn-md" style="font-size: 17px"
-								value="<%=NotificationListCtl.OP_DELETE%>"></td>
+								value="<%=PlacementListCtl.OP_DELETE%>"></td>
 
 							<td align="right"><input type="submit" name="operation"
 								class="btn btn-secondary btn-md" style="font-size: 17px"
-								style="padding: 5px;" value="<%=NotificationListCtl.OP_NEXT%>"
+								style="padding: 5px;" value="<%=PlacementListCtl.OP_NEXT%>"
 								<%=(nextPageSize != 0) ? "" : "disabled"%>></td>
 						</tr>
 						<tr></tr>
@@ -203,7 +205,7 @@ background-repeat: no-repeat;
 							System.out.println("user list view list.size==0");
 					%>
 					<center>
-						<h1 class="text-primary font-weight-bold pt-3">Notification
+						<h1 class="text-primary font-weight-bold pt-3">Placement
 							List</h1>
 					</center>
 
@@ -229,7 +231,7 @@ background-repeat: no-repeat;
 					<div style="padding-left: 48%;">
 						<input type="submit" name="operation"
 							class="btn btn-primary btn-md" style="font-size: 17px"
-							value="<%=NotificationListCtl.OP_BACK%>">
+							value="<%=PlacementListCtl.OP_BACK%>">
 					</div>
 					<%
 						}

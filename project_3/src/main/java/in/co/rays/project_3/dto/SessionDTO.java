@@ -1,54 +1,45 @@
 package in.co.rays.project_3.dto;
 
-public class NotificationDTO extends BaseDTO {
+import java.util.Date;
+
+public class SessionDTO extends BaseDTO {
 
 	private String code;
 	private String name;
-	private String type;
+	private Date loginTime;
 	private String status;
-
 	public String getCode() {
 		return code;
 	}
-
 	public void setCode(String code) {
 		this.code = code;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getType() {
-		return type;
+	public Date getLoginTime() {
+		return loginTime;
 	}
-
-	public void setType(String type) {
-		this.type = type;
+	public void setLoginTime(Date loginTime) {
+		this.loginTime = loginTime;
 	}
-
 	public String getStatus() {
 		return status;
 	}
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 	@Override
 	public String getKey() {
 		// TODO Auto-generated method stub
-		return code;
+		return null;
 	}
-
 	@Override
 	public String getValue() {
 		// TODO Auto-generated method stub
-		return code;
+		return null;
 	}
-
 }

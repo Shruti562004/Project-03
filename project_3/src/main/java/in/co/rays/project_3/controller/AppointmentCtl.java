@@ -10,55 +10,50 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import in.co.rays.project_3.dto.BaseDTO;
-import in.co.rays.project_3.dto.NotificationDTO;
+import in.co.rays.project_3.dto.AppointmentDTO;
 
 import in.co.rays.project_3.exception.ApplicationException;
 import in.co.rays.project_3.exception.DuplicateRecordException;
 
 import in.co.rays.project_3.model.ModelFactory;
-import in.co.rays.project_3.model.NotificationModelInt;
+import in.co.rays.project_3.model.AppointmentModelInt;
 import in.co.rays.project_3.util.DataUtility;
 import in.co.rays.project_3.util.DataValidator;
 import in.co.rays.project_3.util.PropertyReader;
 import in.co.rays.project_3.util.ServletUtility;
 
 /**
- * course functionality ctl.to perform add,delete ,update operation
+ * Appointment functionality ctl.to perform add,delete ,update operation
  * 
  * @author Shruti Rathore
  *
  */
 
-@WebServlet(urlPatterns = { "/ctl/NotificationCtl" })
-public class NotificationCtl extends BaseCtl {
+@WebServlet(urlPatterns = { "/ctl/AppointmentCtl" })
+public class AppointmentCtl extends BaseCtl {
 
-	private static Logger log = Logger.getLogger(NotificationCtl.class);
+	private static Logger log = Logger.getLogger(AppointmentCtl.class);
 
 	protected boolean validate(HttpServletRequest request) {
 
-		log.debug("course ctl validate start");
+		log.debug("Appointment ctl validate start");
 
 		boolean pass = true;
-		if (DataValidator.isNull(request.getParameter("code"))) {
-			request.setAttribute("code", PropertyReader.getValue("error.require", "code "));
-			pass = false;
-		} else if (!DataValidator.isName(request.getParameter("code"))) {
-			request.setAttribute("code", PropertyReader.getValue("error.name", " code"));
-			pass = false;
-		}
+		
 		if (DataValidator.isNull(request.getParameter("name"))) {
 			request.setAttribute("name", PropertyReader.getValue("error.require", "name"));
 			pass = false;
-		}else if (!DataValidator.isName(request.getParameter("name"))) {
+		} 
+		else if (!DataValidator.isName(request.getParameter("name"))) {
 			request.setAttribute("name", PropertyReader.getValue("error.name", " name"));
 			pass = false;
 		}
-		if (DataValidator.isNull(request.getParameter("type"))) {
-			request.setAttribute("type", PropertyReader.getValue("error.require", "type"));
+		if (DataValidator.isNull(request.getParameter("date"))) {
+			request.setAttribute("date", PropertyReader.getValue("error.require", "date"));
 			pass = false;
 		}
-		else if (!DataValidator.isName(request.getParameter("type"))) {
-			request.setAttribute("type", PropertyReader.getValue("error.name", " type"));
+		else if (!DataValidator.isDate(request.getParameter("date"))) {
+			request.setAttribute("date", PropertyReader.getValue("error.name", " date"));
 			pass = false;
 		}
 		 
@@ -66,24 +61,25 @@ public class NotificationCtl extends BaseCtl {
 			request.setAttribute("status", PropertyReader.getValue("error.require", "status"));
 			pass = false;
 		}
-		else if (!DataValidator.isName(request.getParameter("code"))) {
+		
+		else if (!DataValidator.isName(request.getParameter("status"))) {
 			request.setAttribute("status", PropertyReader.getValue("error.name", " status"));
 			pass = false;
 		}
-		log.debug("course ctl validate end");
+		log.debug("Appointment ctl validate end");
 		return pass;
 	}
 
 	protected BaseDTO populateDTO(HttpServletRequest request) {
 
-		log.debug("course ctl populate bean start");
+		log.debug("Appointment ctl populate bean start");
 
-		NotificationDTO dto = new NotificationDTO();
+		AppointmentDTO dto = new AppointmentDTO();
 
 		dto.setId(DataUtility.getLong(request.getParameter("id")));
-		dto.setCode(DataUtility.getString(request.getParameter("code")));
+	
 		dto.setName(DataUtility.getString(request.getParameter("name")));
-		dto.setType(DataUtility.getString(request.getParameter("type")));
+		dto.setDate(DataUtility.getDate(request.getParameter("date")));
 		dto.setStatus(DataUtility.getString(request.getParameter("status")));
 		populateBean(dto, request);
 
@@ -96,14 +92,14 @@ public class NotificationCtl extends BaseCtl {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
-		log.debug("course ctl do get start");
+		log.debug("Appointment ctl do get start");
 
 		String op = DataUtility.getString(request.getParameter("operation"));
 		long id = DataUtility.getLong(request.getParameter("id"));
-		NotificationModelInt model = ModelFactory.getInstance().getNotificationModel();
+		AppointmentModelInt model = ModelFactory.getInstance().getAppointmentModel();
 
 		if (id > 0 || op != null) {
-			NotificationDTO dto;
+			AppointmentDTO dto;
 			try {
 				dto = model.findByPK(id);
 				ServletUtility.setDto(dto, request);
@@ -116,7 +112,7 @@ public class NotificationCtl extends BaseCtl {
 		}
 
 		ServletUtility.forward(getView(), request, response);
-		log.debug("course ctl do get end");
+		log.debug(" ctl do get end");
 	}
 
 	/**
@@ -131,11 +127,11 @@ public class NotificationCtl extends BaseCtl {
 		String op = DataUtility.getString(request.getParameter("operation"));
 
 		long id = DataUtility.getLong(request.getParameter("id"));
-		NotificationModelInt model = ModelFactory.getInstance().getNotificationModel();
+		AppointmentModelInt model = ModelFactory.getInstance().getAppointmentModel();
 
 		if (OP_SAVE.equalsIgnoreCase(op) || OP_UPDATE.equalsIgnoreCase(op)) {
 
-			NotificationDTO dto = (NotificationDTO) populateDTO(request);
+			AppointmentDTO dto = (AppointmentDTO) populateDTO(request);
 
 			try {
 				if (id > 0) {
@@ -155,7 +151,7 @@ public class NotificationCtl extends BaseCtl {
 						return;
 					} catch (DuplicateRecordException e) {
 						ServletUtility.setDto(dto, request);
-						ServletUtility.setErrorMessage("name  already exists", request);
+						ServletUtility.setErrorMessage("code  already exists", request);
 					}
 				}
 
@@ -168,10 +164,10 @@ public class NotificationCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Login id already exists", request);
 			}
 		} else if (OP_DELETE.equalsIgnoreCase(op)) {
-			NotificationDTO dto = (NotificationDTO) populateDTO(request);
+			AppointmentDTO dto = (AppointmentDTO) populateDTO(request);
 			try {
 				model.delete(dto);
-				ServletUtility.redirect(ORSView.NOTIFICATION_LIST_CTL, request, response);
+				ServletUtility.redirect(ORSView.APPOINTMENT_LIST_CTL, request, response);
 				return;
 			} catch (ApplicationException e) {
 				log.error(e);
@@ -179,24 +175,24 @@ public class NotificationCtl extends BaseCtl {
 				return;
 			}
 		} else if (OP_CANCEL.equalsIgnoreCase(op)) {
-			ServletUtility.redirect(ORSView.NOTIFICATION_LIST_CTL, request, response);
+			ServletUtility.redirect(ORSView.APPOINTMENT_LIST_CTL, request, response);
 			return;
 
 		} else if (OP_RESET.equalsIgnoreCase(op)) {
-			ServletUtility.redirect(ORSView.NOTIFICATION_CTL, request, response);
+			ServletUtility.redirect(ORSView.APPOINTMENT_CTL, request, response);
 			return;
 
 		}
 		ServletUtility.forward(getView(), request, response);
 
-		log.debug("course ctl do post end");
+		log.debug("Appointment ctl do post end");
 
 	}
 
 	@Override
 	protected String getView() {
 
-		return ORSView.NOTIFICATION_VIEW;
+		return ORSView.APPOINTMENT_VIEW;
 	}
 
 }

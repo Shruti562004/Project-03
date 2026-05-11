@@ -25,8 +25,8 @@ public class NotificationModelTest {
 		//deleteTest();
 		//findByPkTest();
 		//findByName();
-		//searchTest();
-		listTest();
+		searchTest();
+		//listTest();
 	}
 
 	private static void findByName() throws ApplicationException {
@@ -42,7 +42,7 @@ public class NotificationModelTest {
 
 	private static void findByPkTest() throws ApplicationException {
 		NotificationDTO dto=new NotificationDTO();
-		dto=model.findByPK(1L);
+		dto=model.findByPK(2L);
 		System.out.println(dto.getCode());
 		System.out.println(dto.getName());
 		System.out.println(dto.getType());

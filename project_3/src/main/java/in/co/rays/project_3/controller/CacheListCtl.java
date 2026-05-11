@@ -11,41 +11,41 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import in.co.rays.project_3.dto.BaseDTO;
-import in.co.rays.project_3.dto.NotificationDTO;
+import in.co.rays.project_3.dto.CacheDTO;
 import in.co.rays.project_3.exception.ApplicationException;
-import in.co.rays.project_3.model.NotificationModelInt;
+import in.co.rays.project_3.model.CacheModelInt;
 import in.co.rays.project_3.model.ModelFactory;
 import in.co.rays.project_3.util.DataUtility;
 import in.co.rays.project_3.util.PropertyReader;
 import in.co.rays.project_3.util.ServletUtility;
 
 /**
- * Notification functionality ctl.to show list of Notification
+ *Cache functionality ctl.to show list ofCache
  * 
  * @author Shruti Rathore
  *
  */
-@WebServlet(name = "NotificationListCtl", urlPatterns = { "/ctl/NotificationListCtl" })
-public class NotificationListCtl extends BaseCtl {
+@WebServlet(name = "CacheListCtl", urlPatterns = { "/ctl/CacheListCtl" })
+public class CacheListCtl extends BaseCtl {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static Logger log = Logger.getLogger(NotificationListCtl.class);
+	private static Logger log = Logger.getLogger(CacheListCtl.class);
 
 	protected void preload(HttpServletRequest request) {
 
-	    NotificationModelInt model = ModelFactory.getInstance().getNotificationModel();
+		CacheModelInt model = ModelFactory.getInstance().getCacheModel();
 
-	    try {
-	        List codeList = model.list();
-	        request.setAttribute("codeList", codeList);   // ✅ FIXED
+		try {
+			List list = model.list();
+			request.setAttribute("RollNo", list);
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+		} catch (Exception e) {
+
+		}
 	}
 
 	@Override
@@ -53,12 +53,12 @@ public class NotificationListCtl extends BaseCtl {
 
 		log.debug("course ctl populate bean start");
 
-		NotificationDTO dto = new NotificationDTO();
+		CacheDTO dto = new CacheDTO();
 
 		dto.setId(DataUtility.getLong(request.getParameter("id")));
 		dto.setCode(DataUtility.getString(request.getParameter("code")));
 		dto.setName(DataUtility.getString(request.getParameter("name")));
-		dto.setType(DataUtility.getString(request.getParameter("type")));
+		dto.setValue(DataUtility.getString(request.getParameter("value")));
 		dto.setStatus(DataUtility.getString(request.getParameter("status")));
 		populateBean(dto, request);
 
@@ -82,12 +82,12 @@ public class NotificationListCtl extends BaseCtl {
 
 		pageSize = (pageSize == 0) ? DataUtility.getInt(PropertyReader.getValue("page.size")) : pageSize;
 
-		NotificationDTO dto = (NotificationDTO) populateDTO(request);
+		CacheDTO dto = (CacheDTO) populateDTO(request);
 
 		List list = null;
 		List next = null;
 
-		NotificationModelInt model = ModelFactory.getInstance().getNotificationModel();
+		CacheModelInt model = ModelFactory.getInstance().getCacheModel();
 		try {
 			list = model.search(dto, pageNo, pageSize);
 			ServletUtility.setDto(dto, request);
@@ -112,7 +112,7 @@ public class NotificationListCtl extends BaseCtl {
 		ServletUtility.setPageNo(pageNo, request);
 		ServletUtility.setPageSize(pageSize, request);
 		ServletUtility.forward(getView(), request, response);
-		log.debug("NotificationListCtl doGet End");
+		log.debug("CacheListCtl doGet End");
 
 	}
 
@@ -123,7 +123,7 @@ public class NotificationListCtl extends BaseCtl {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		log.debug("NotificationListCtl doPost Start");
+		log.debug("CacheListCtl doPost Start");
 
 		List list = null;
 		List next = null;
@@ -135,13 +135,13 @@ public class NotificationListCtl extends BaseCtl {
 
 		pageSize = (pageSize == 0) ? DataUtility.getInt(PropertyReader.getValue("page.size")) : pageSize;
 
-		NotificationDTO dto = (NotificationDTO) populateDTO(request);
+		CacheDTO dto = (CacheDTO) populateDTO(request);
 
 		String op = DataUtility.getString(request.getParameter("operation"));
 
 		String[] ids = request.getParameterValues("ids");
 
-		NotificationModelInt model = ModelFactory.getInstance().getNotificationModel();
+		CacheModelInt model = ModelFactory.getInstance().getCacheModel();
 
 		try {
 
@@ -156,19 +156,19 @@ public class NotificationListCtl extends BaseCtl {
 				}
 
 			} else if (OP_NEW.equalsIgnoreCase(op)) {
-				ServletUtility.redirect(ORSView.NOTIFICATION_CTL, request, response);
+				ServletUtility.redirect(ORSView.CACHE_CTL, request, response);
 				return;
 			} else if (OP_RESET.equalsIgnoreCase(op)) {
 
-				ServletUtility.redirect(ORSView.NOTIFICATION_LIST_CTL, request, response);
+				ServletUtility.redirect(ORSView.CACHE_LIST_CTL, request, response);
 				return;
 			} else if (OP_BACK.equalsIgnoreCase(op)) {
-				ServletUtility.redirect(ORSView.NOTIFICATION_LIST_CTL, request, response);
+				ServletUtility.redirect(ORSView.CACHE_LIST_CTL, request, response);
 				return;
 			} else if (OP_DELETE.equalsIgnoreCase(op)) {
 				pageNo = 1;
 				if (ids != null && ids.length > 0) {
-					NotificationDTO deletebean = new NotificationDTO();
+					CacheDTO deletebean = new CacheDTO();
 					for (String id : ids) {
 						deletebean.setId(DataUtility.getLong(id));
 						model.delete(deletebean);
@@ -179,7 +179,7 @@ public class NotificationListCtl extends BaseCtl {
 					ServletUtility.setErrorMessage("Select at least one record", request);
 				}
 			}
-			dto = (NotificationDTO) populateDTO(request);
+			dto = (CacheDTO) populateDTO(request);
 
 			list = model.search(dto, pageNo, pageSize);// calling search
 
@@ -209,12 +209,12 @@ public class NotificationListCtl extends BaseCtl {
 			return;
 		}
 
-		log.debug("NotificationListCtl doPost End");
+		log.debug("CacheListCtl doPost End");
 	}
 
 	@Override
 	protected String getView() {
 
-		return ORSView.NOTIFICATION_LIST_VIEW;
+		return ORSView.CACHE_LIST_VIEW;
 	}
 }

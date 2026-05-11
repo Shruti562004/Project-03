@@ -130,12 +130,56 @@ public interface ORSView {
 
 	public String MARKSHEET_MERIT_LIST_CTL = APP_CONTEXT + "/ctl/MarksheetMeritListCtl";
 	
-	public String NOTIFICATION__VIEW = PAGE_FOLDER + "/NotificationView.jsp";
+	public String NOTIFICATION_VIEW = PAGE_FOLDER + "/NotificationView.jsp";
 	
 	public String NOTIFICATION_CTL = APP_CONTEXT + "/ctl/NotificationCtl";
 	
-	public String NOTIFICATION__LIST_VIEW = PAGE_FOLDER + "/NotificationListView.jsp";
+	public String NOTIFICATION_LIST_VIEW = PAGE_FOLDER + "/NotificationListView.jsp";
 	
 	public String NOTIFICATION_LIST_CTL = APP_CONTEXT + "/ctl/NotificationListCtl";
+	
+public String CACHE_VIEW = PAGE_FOLDER + "/CacheView.jsp";
+	
+	public String CACHE_CTL = APP_CONTEXT + "/ctl/CacheCtl";
+	
+	public String CACHE_LIST_VIEW = PAGE_FOLDER + "/CacheListView.jsp";
+	
+	public String CACHE_LIST_CTL = APP_CONTEXT + "/ctl/CacheListCtl";
+	
+	
+public String APPOINTMENT_VIEW = PAGE_FOLDER + "/AppointmentView.jsp";
+	
+	public String  APPOINTMENT_CTL = APP_CONTEXT + "/ctl/AppointmentCtl";
+	
+	public String  APPOINTMENT_LIST_VIEW = PAGE_FOLDER + "/AppointmentListView.jsp";
+	
+	public String  APPOINTMENT_LIST_CTL = APP_CONTEXT + "/ctl/AppointmentListCtl";
+	
+	
+public String CONSUMER_VIEW = PAGE_FOLDER + "/ConsumerView.jsp";
+	
+	public String   CONSUMER_CTL = APP_CONTEXT + "/ctl/ConsumerCtl";
+	
+	public String   CONSUMER_LIST_VIEW = PAGE_FOLDER + "/ConsumerListView.jsp";
+	
+	public String   CONSUMER_LIST_CTL = APP_CONTEXT + "/ctl/ConsumerListCtl";
+	
+	
+public String SESSION_VIEW = PAGE_FOLDER + "/SessionView.jsp";
+	
+	public String   SESSION_CTL = APP_CONTEXT + "/ctl/SessionCtl";
+	
+	public String   SESSION_LIST_VIEW = PAGE_FOLDER + "/SessionListView.jsp";
+	
+	public String   SESSION_LIST_CTL = APP_CONTEXT + "/ctl/SessionListCtl";
+	
+	
+public String PLACEMENT_VIEW = PAGE_FOLDER + "/PlacementView.jsp";
+	
+	public String   PLACEMENT_CTL = APP_CONTEXT + "/ctl/PlacementCtl";
+	
+	public String   PLACEMENT_LIST_VIEW = PAGE_FOLDER + "/PlacementListView.jsp";
+	
+	public String   PLACEMENT_LIST_CTL = APP_CONTEXT + "/ctl/PlacementListCtl";
 
 }

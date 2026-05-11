@@ -61,5 +61,18 @@
 		
 		<mapping
 			resource="in/co/rays/project_3/hbm/Validation.hbm.xml" />
+			
+			<mapping
+			resource="in/co/rays/project_3/hbm/CacheDTO.hbm.xml" />
+			
+			<mapping
+			resource="in/co/rays/project_3/hbm/ConsumerDTO.hbm.xml" />
+			
+			
+			<mapping
+			resource="in/co/rays/project_3/hbm/SessionDTO.hbm.xml" />
+			
+				<mapping
+			resource="in/co/rays/project_3/hbm/PlacementDTO.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import in.co.rays.project_3.dto.BaseDTO;
-import in.co.rays.project_3.dto.NotificationDTO;
+import in.co.rays.project_3.dto.PlacementDTO;
 
 import in.co.rays.project_3.exception.ApplicationException;
 import in.co.rays.project_3.exception.DuplicateRecordException;
 
 import in.co.rays.project_3.model.ModelFactory;
-import in.co.rays.project_3.model.NotificationModelInt;
+import in.co.rays.project_3.model.PlacementModelInt;
 import in.co.rays.project_3.util.DataUtility;
 import in.co.rays.project_3.util.DataValidator;
 import in.co.rays.project_3.util.PropertyReader;
@@ -29,45 +29,46 @@ import in.co.rays.project_3.util.ServletUtility;
  *
  */
 
-@WebServlet(urlPatterns = { "/ctl/NotificationCtl" })
-public class NotificationCtl extends BaseCtl {
+@WebServlet(urlPatterns = { "/ctl/PlacementCtl" })
+public class PlacementCtl extends BaseCtl {
 
-	private static Logger log = Logger.getLogger(NotificationCtl.class);
+	private static Logger log = Logger.getLogger(PlacementCtl.class);
 
 	protected boolean validate(HttpServletRequest request) {
 
 		log.debug("course ctl validate start");
 
 		boolean pass = true;
-		if (DataValidator.isNull(request.getParameter("code"))) {
-			request.setAttribute("code", PropertyReader.getValue("error.require", "code "));
-			pass = false;
-		} else if (!DataValidator.isName(request.getParameter("code"))) {
-			request.setAttribute("code", PropertyReader.getValue("error.name", " code"));
-			pass = false;
-		}
+		
 		if (DataValidator.isNull(request.getParameter("name"))) {
 			request.setAttribute("name", PropertyReader.getValue("error.require", "name"));
 			pass = false;
-		}else if (!DataValidator.isName(request.getParameter("name"))) {
+		} else if (!DataValidator.isName(request.getParameter("name"))) {
 			request.setAttribute("name", PropertyReader.getValue("error.name", " name"));
 			pass = false;
 		}
-		if (DataValidator.isNull(request.getParameter("type"))) {
-			request.setAttribute("type", PropertyReader.getValue("error.require", "type"));
+		if (DataValidator.isNull(request.getParameter("coordinates"))) {
+			request.setAttribute("coordinates", PropertyReader.getValue("error.require", "coordinates "));
+			pass = false;
+		} else if (!DataValidator.isName(request.getParameter("coordinates"))) {
+			request.setAttribute("coordinates", PropertyReader.getValue("error.name", " coordinates"));
 			pass = false;
 		}
-		else if (!DataValidator.isName(request.getParameter("type"))) {
-			request.setAttribute("type", PropertyReader.getValue("error.name", " type"));
+		if (DataValidator.isNull(request.getParameter("scale"))) {
+			request.setAttribute("scale", PropertyReader.getValue("error.require", "scale"));
+			pass = false;
+		}
+		else if (!DataValidator.isName(request.getParameter("scale"))) {
+			request.setAttribute("scale", PropertyReader.getValue("error.name", " scale"));
 			pass = false;
 		}
 		 
-		if (DataValidator.isNull(request.getParameter("status"))) {
-			request.setAttribute("status", PropertyReader.getValue("error.require", "status"));
+		if (DataValidator.isNull(request.getParameter("rotation"))) {
+			request.setAttribute("rotation", PropertyReader.getValue("error.require", "rotation"));
 			pass = false;
 		}
-		else if (!DataValidator.isName(request.getParameter("code"))) {
-			request.setAttribute("status", PropertyReader.getValue("error.name", " status"));
+		else if (!DataValidator.isName(request.getParameter("rotation"))) {
+			request.setAttribute("rotation", PropertyReader.getValue("error.name", " rotation"));
 			pass = false;
 		}
 		log.debug("course ctl validate end");
@@ -78,21 +79,21 @@ public class NotificationCtl extends BaseCtl {
 
 		log.debug("course ctl populate bean start");
 
-		NotificationDTO dto = new NotificationDTO();
+		PlacementDTO dto = new PlacementDTO();
 
 		dto.setId(DataUtility.getLong(request.getParameter("id")));
-		dto.setCode(DataUtility.getString(request.getParameter("code")));
+
 		dto.setName(DataUtility.getString(request.getParameter("name")));
-		dto.setType(DataUtility.getString(request.getParameter("type")));
-		dto.setStatus(DataUtility.getString(request.getParameter("status")));
+		dto.setCoordinates(DataUtility.getString(request.getParameter("coordinates")));
+		dto.setScale(DataUtility.getString(request.getParameter("scale")));
+		dto.setRotation(DataUtility.getString(request.getParameter("rotation")));
+
 		populateBean(dto, request);
 
 		log.debug("ctl populate bean end");
 
 		return dto;
-
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
@@ -100,10 +101,10 @@ public class NotificationCtl extends BaseCtl {
 
 		String op = DataUtility.getString(request.getParameter("operation"));
 		long id = DataUtility.getLong(request.getParameter("id"));
-		NotificationModelInt model = ModelFactory.getInstance().getNotificationModel();
+		PlacementModelInt model = ModelFactory.getInstance().getPlacementModel();
 
 		if (id > 0 || op != null) {
-			NotificationDTO dto;
+			PlacementDTO dto;
 			try {
 				dto = model.findByPK(id);
 				ServletUtility.setDto(dto, request);
@@ -116,7 +117,7 @@ public class NotificationCtl extends BaseCtl {
 		}
 
 		ServletUtility.forward(getView(), request, response);
-		log.debug("course ctl do get end");
+		log.debug(" ctl do get end");
 	}
 
 	/**
@@ -131,11 +132,11 @@ public class NotificationCtl extends BaseCtl {
 		String op = DataUtility.getString(request.getParameter("operation"));
 
 		long id = DataUtility.getLong(request.getParameter("id"));
-		NotificationModelInt model = ModelFactory.getInstance().getNotificationModel();
+		PlacementModelInt model = ModelFactory.getInstance().getPlacementModel();
 
 		if (OP_SAVE.equalsIgnoreCase(op) || OP_UPDATE.equalsIgnoreCase(op)) {
 
-			NotificationDTO dto = (NotificationDTO) populateDTO(request);
+			PlacementDTO dto = (PlacementDTO) populateDTO(request);
 
 			try {
 				if (id > 0) {
@@ -165,13 +166,13 @@ public class NotificationCtl extends BaseCtl {
 				return;
 			} catch (Exception e) {
 				ServletUtility.setDto(dto, request);
-				ServletUtility.setErrorMessage("Login id already exists", request);
+				ServletUtility.setErrorMessage("Name already exists", request);
 			}
 		} else if (OP_DELETE.equalsIgnoreCase(op)) {
-			NotificationDTO dto = (NotificationDTO) populateDTO(request);
+			PlacementDTO dto = (PlacementDTO) populateDTO(request);
 			try {
 				model.delete(dto);
-				ServletUtility.redirect(ORSView.NOTIFICATION_LIST_CTL, request, response);
+				ServletUtility.redirect(ORSView.PLACEMENT_LIST_CTL, request, response);
 				return;
 			} catch (ApplicationException e) {
 				log.error(e);
@@ -179,11 +180,11 @@ public class NotificationCtl extends BaseCtl {
 				return;
 			}
 		} else if (OP_CANCEL.equalsIgnoreCase(op)) {
-			ServletUtility.redirect(ORSView.NOTIFICATION_LIST_CTL, request, response);
+			ServletUtility.redirect(ORSView.PLACEMENT_LIST_CTL, request, response);
 			return;
 
 		} else if (OP_RESET.equalsIgnoreCase(op)) {
-			ServletUtility.redirect(ORSView.NOTIFICATION_CTL, request, response);
+			ServletUtility.redirect(ORSView.PLACEMENT_LIST_CTL, request, response);
 			return;
 
 		}
@@ -196,7 +197,7 @@ public class NotificationCtl extends BaseCtl {
 	@Override
 	protected String getView() {
 
-		return ORSView.NOTIFICATION_VIEW;
+		return ORSView.PLACEMENT_VIEW;
 	}
 
 }

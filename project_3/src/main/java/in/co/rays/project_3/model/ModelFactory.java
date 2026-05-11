@@ -230,7 +230,56 @@ public ValidationModelInt getValidationModel() {
 	return ValidationModel;
 }
 
+public CacheModelInt getCacheModel() {
+	CacheModelInt CacheModel = (CacheModelInt) modelCache.get("CacheModel");
+	if (CacheModel == null) {
+		if ("Hibernate".equals(DATABASE)) {
+			CacheModel = new CacheModelHibImp();
 
+		}
+		
+		modelCache.put("CacheModel", CacheModel);
+	}
+	return CacheModel;
+}
+
+
+public ConsumerModelInt getConsumerModel() {
+	ConsumerModelInt ConsumerModel = (ConsumerModelInt) modelCache.get("ConsumerModel");
+	if (ConsumerModel == null) {
+		if ("Hibernate".equals(DATABASE)) {
+			ConsumerModel = new  ConsumerModelHibImp();
+
+		}
+		
+		modelCache.put("ConsumerModel", ConsumerModel);
+	}
+	return ConsumerModel;
+}
+public SessionModelInt getSessionModel() {
+	SessionModelInt SessionModel = (SessionModelInt) modelCache.get("SessionModel");
+	if (SessionModel == null) {
+		if ("Hibernate".equals(DATABASE)) {
+			SessionModel = new  SessionModelHibImp();
+
+		}
+		
+		modelCache.put("SessionModel", SessionModel);
+	}
+	return SessionModel;
+}
+public PlacementModelInt getPlacementModel() {
+	PlacementModelInt PlacementModel = (PlacementModelInt) modelCache.get("PlacementModel");
+	if (PlacementModel == null) {
+		if ("Hibernate".equals(DATABASE)) {
+			PlacementModel = new PlacementModelHibImp();
+
+		}
+		
+		modelCache.put("PlacementModel", PlacementModel);
+	}
+	return PlacementModel;
+}
 
 }
 

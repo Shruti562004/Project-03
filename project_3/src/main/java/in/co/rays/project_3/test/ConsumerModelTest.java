@@ -2,70 +2,75 @@ package in.co.rays.project_3.test;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import in.co.rays.project_3.dto.AppointmentDTO;
-import in.co.rays.project_3.dto.NotificationDTO;
+import in.co.rays.project_3.dto.ConsumerDTO;
+
 import in.co.rays.project_3.exception.ApplicationException;
 import in.co.rays.project_3.exception.DuplicateRecordException;
-import in.co.rays.project_3.model.AppointmentModelHibImp;
-import in.co.rays.project_3.model.AppointmentModelInt;
-import in.co.rays.project_3.model.CateringModelHibImp;
-import in.co.rays.project_3.model.CateringModelInt;
+import in.co.rays.project_3.model.ConsumerModelHibImp;
+import in.co.rays.project_3.model.ConsumerModelInt;
 
-public class AppointmentModelTest {
+
+public class ConsumerModelTest {
 	
-	public static AppointmentModelInt model=new AppointmentModelHibImp();
+	public static ConsumerModelInt model=new ConsumerModelHibImp();
 	public static void main(String[] args) throws ParseException, ApplicationException, DuplicateRecordException {
 		
 		
-		//addTest();
+	//addTest();
 		//deleteTest();
 		//updateTest();
 		//findByPkTest();
-		//findByName();
+		//findByCode();
 		//listTest();
 		searchList();
 	}
 
 	private static void searchList() throws ApplicationException {
-		AppointmentDTO dto=new AppointmentDTO();
+		ConsumerDTO dto=new ConsumerDTO();
 		List list=new ArrayList();
-		dto.setName("c");
+	dto.setCode("p");
 		list=model.search(dto, 0, 0);
 		Iterator it=list.iterator();
 		while(it.hasNext()) {
-			dto=(AppointmentDTO) it.next();
-
+			dto=(ConsumerDTO) it.next();
+			System.out.println(dto.getId());
+			System.out.println(dto.getCode());
+			System.out.println(dto.getGroup());
 			System.out.println(dto.getName());
-			System.out.println(dto.getDate());
+			
 			System.out.println(dto.getStatus());
 			
 		}
 		
 	}
 
-	private static void findByName() throws ApplicationException {
-		AppointmentDTO dto=new AppointmentDTO();
-		dto=model.findByName("chinuu");
-		
+	private static void findByCode() throws ApplicationException {
+		ConsumerDTO dto=new ConsumerDTO();
+		dto=model.findByCode("book");
+		System.out.println(dto.getId());
+		System.out.println(dto.getCode());
+		System.out.println(dto.getGroup());
 		System.out.println(dto.getName());
-		System.out.println(dto.getDate());
+		
 		System.out.println(dto.getStatus());
 		
 	}
 
 	private static void updateTest() throws ParseException, ApplicationException, DuplicateRecordException {
-		AppointmentDTO dto=new AppointmentDTO();
-		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		ConsumerDTO dto=new ConsumerDTO();
+		
 		dto.setId(2L);
-		dto.setName("chinuu");
-		dto.setDate(sdf.parse("20-06-2003"));
-		dto.setStatus("pending");
+         dto.setCode("book");
+		
+		dto.setGroup("save");
+		dto.setName("gggf");
+		dto.setStatus("erf");
 		dto.setCreatedBy("Admin");
 	     dto.setModifiedBy("Admin");
 	     dto.setCreatedDatetime(new Timestamp(new Date().getTime()));
@@ -75,11 +80,13 @@ public class AppointmentModelTest {
 	}
 
 	private static void addTest() throws ParseException, ApplicationException, DuplicateRecordException {
-		AppointmentDTO dto=new AppointmentDTO();
-		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-		dto.setName("sandeep");
-		dto.setDate(sdf.parse("20-06-2003"));
-		dto.setStatus("pending");
+		ConsumerDTO dto=new ConsumerDTO();
+	
+		dto.setCode("hg");
+		
+		dto.setGroup("save");
+		dto.setName("gggf");
+		dto.setStatus("erf");
 		dto.setCreatedBy("Admin");
 	     dto.setModifiedBy("Admin");
 	     dto.setCreatedDatetime(new Timestamp(new Date().getTime()));
@@ -89,18 +96,20 @@ public class AppointmentModelTest {
 	
 	
 	private static void deleteTest() throws ApplicationException {
-		AppointmentDTO dto=new AppointmentDTO();
-		dto.setId(1L);
+		ConsumerDTO dto=new ConsumerDTO();
+		dto.setId(3L);
 		model.delete(dto);
 		
 	}
 	
 	private static void findByPkTest() throws ApplicationException {
-		AppointmentDTO dto=new AppointmentDTO();
-		dto=model.findByPK(3L);
-		
+		ConsumerDTO dto=new ConsumerDTO();
+		dto=model.findByPK(2L);
+		System.out.println(dto.getId());
+		System.out.println(dto.getCode());
+		System.out.println(dto.getGroup());
 		System.out.println(dto.getName());
-		System.out.println(dto.getDate());
+		
 		System.out.println(dto.getStatus());
 		
 	}
@@ -108,16 +117,19 @@ public class AppointmentModelTest {
 
 	public static void listTest() throws ApplicationException {
 		// TODO Auto-generated method stub
-		AppointmentDTO dto = null;
+		ConsumerDTO dto = null;
 		List list = new ArrayList();
 		 list=model.list(0,0);
 		System.out.println(list.size());
 		Iterator it = list.iterator();
 		while (it.hasNext()) {
-			dto = (AppointmentDTO) it.next();
+			dto = (ConsumerDTO) it.next();
 			
+			System.out.println(dto.getId());
+			System.out.println(dto.getCode());
+			System.out.println(dto.getGroup());
 			System.out.println(dto.getName());
-			System.out.println(dto.getDate());
+			
 			System.out.println(dto.getStatus());
 		}
 	}

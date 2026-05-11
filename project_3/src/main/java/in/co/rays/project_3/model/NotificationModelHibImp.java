@@ -12,6 +12,8 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.exception.JDBCConnectionException;
 
 import in.co.rays.project_3.dto.CollegeDTO;
+import in.co.rays.project_3.dto.ConsumerDTO;
+import in.co.rays.project_3.dto.NotificationDTO;
 import in.co.rays.project_3.dto.FacultyDTO;
 import in.co.rays.project_3.dto.NotificationDTO;
 import in.co.rays.project_3.exception.ApplicationException;
@@ -22,10 +24,14 @@ public class NotificationModelHibImp implements NotificationModelInt{
 
 	
 	
-	public long add(NotificationDTO dto) throws ApplicationException {
+	public long add(NotificationDTO dto) throws ApplicationException, DuplicateRecordException {
 	    Session session = null;
 	    Transaction tx = null;
-
+		NotificationModelInt Notificationmod = ModelFactory.getInstance().getNotificationModel();
+		NotificationDTO Notificationdto = Notificationmod.findByName(dto.getName());
+		if(Notificationdto!=null) {
+			throw new DuplicateRecordException("name already exist");
+		}
 	    try {
 	        session = HibDataSource.getSession();
 	        tx = session.beginTransaction();
@@ -75,6 +81,12 @@ public class NotificationModelHibImp implements NotificationModelInt{
 	public void update(NotificationDTO dto) throws ApplicationException, DuplicateRecordException {
 		Session session=null;
 		Transaction tx=null;
+		
+		NotificationModelInt Notificationmod = ModelFactory.getInstance().getNotificationModel();
+		NotificationDTO Notificationdto = Notificationmod.findByName(dto.getName());
+		if(Notificationdto!=null && Notificationdto.getId()!=dto.getId()) {
+			throw new DuplicateRecordException("name already exist");
+		}
 		try {
 			
 			session=HibDataSource.getSession();
@@ -99,7 +111,7 @@ public class NotificationModelHibImp implements NotificationModelInt{
 		NotificationDTO dto=null;
 		try
 		{
-	session=HibDataSource.getSession();
+              	session=HibDataSource.getSession();
 			
 		dto=(NotificationDTO) session.get(NotificationDTO.class, pk);
 		}
