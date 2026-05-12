@@ -181,5 +181,14 @@ public String PLACEMENT_VIEW = PAGE_FOLDER + "/PlacementView.jsp";
 	public String   PLACEMENT_LIST_VIEW = PAGE_FOLDER + "/PlacementListView.jsp";
 	
 	public String   PLACEMENT_LIST_CTL = APP_CONTEXT + "/ctl/PlacementListCtl";
+	
+	
+   public String PROFILE_VIEW = PAGE_FOLDER + "/ProfileView.jsp";
+	
+	public String   PROFILE_CTL = APP_CONTEXT + "/ctl/ProfileCtl";
+	
+	public String   PROFILE_LIST_VIEW = PAGE_FOLDER + "/ProfileListView.jsp";
+	
+	public String   PROFILE_LIST_CTL = APP_CONTEXT + "/ctl/ProfileListCtl";
 
 }

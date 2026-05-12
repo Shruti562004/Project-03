@@ -184,7 +184,7 @@ public class PlacementCtl extends BaseCtl {
 			return;
 
 		} else if (OP_RESET.equalsIgnoreCase(op)) {
-			ServletUtility.redirect(ORSView.PLACEMENT_LIST_CTL, request, response);
+			ServletUtility.redirect(ORSView.PLACEMENT_CTL, request, response);
 			return;
 
 		}

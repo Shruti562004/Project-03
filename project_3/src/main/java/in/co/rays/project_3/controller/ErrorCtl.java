@@ -198,6 +198,39 @@ public class ErrorCtl extends BaseCtl {
 		if (ctl.endsWith(ORSView.MARKSHEET_MERIT_LIST_CTL))
 
 			return ORSView.MARKSHEET_MERIT_LIST_VIEW;
+		
+
+		if (ctl.endsWith(ORSView.SESSION_LIST_CTL))
+
+			return ORSView.SESSION_LIST_VIEW;
+		
+
+		if (ctl.endsWith(ORSView.NOTIFICATION_LIST_CTL))
+
+			return ORSView.NOTIFICATION_LIST_VIEW;
+		
+
+		if (ctl.endsWith(ORSView.CACHE_LIST_CTL))
+
+			return ORSView.CACHE_LIST_VIEW;
+		
+
+		if (ctl.endsWith(ORSView.APPOINTMENT_LIST_CTL))
+
+			return ORSView.APPOINTMENT_LIST_VIEW;
+		
+
+		if (ctl.endsWith(ORSView.CONSUMER_LIST_CTL))
+
+			return ORSView.CONSUMER_LIST_VIEW;
+
+		if (ctl.endsWith(ORSView.PLACEMENT_LIST_CTL))
+
+			return ORSView.PLACEMENT_LIST_VIEW;
+
+		if (ctl.endsWith(ORSView.PROFILE_LIST_CTL))
+
+			return ORSView.PRODUCT_LIST_VIEW;
 
 		return ORSView.ERROR_VIEW;
 

@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java/in/co/rays/project_3/controller/ErrorCtl.java=UTF-8
 encoding//src/main/java/in/co/rays/project_3/controller/NotificationListCtl.java=UTF-8
+encoding//src/main/java/in/co/rays/project_3/controller/ProfileListCtl.java=UTF-8
 encoding//src/main/java/in/co/rays/project_3/model/AppointmentModelHibImp.java=UTF-8
 encoding//src/main/java/in/co/rays/project_3/model/SessionModelHibImp.java=UTF-8
 encoding//src/main/webapp/jsp/NotificationListView.jsp=UTF-8

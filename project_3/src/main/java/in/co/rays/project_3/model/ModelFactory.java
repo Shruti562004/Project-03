@@ -281,5 +281,19 @@ public PlacementModelInt getPlacementModel() {
 	return PlacementModel;
 }
 
+
+public ProfileModelInt getProfileModel() {
+	ProfileModelInt  ProfileModel= (ProfileModelInt) modelCache.get("ProfileModel");
+	if (ProfileModel == null) {
+		if ("Hibernate".equals(DATABASE)) {
+			ProfileModel = new ProfileModelHibImp();
+
+		}
+		
+		modelCache.put("ProfileModel", ProfileModel);
+	}
+	return ProfileModel;
+}
+
 }
 
