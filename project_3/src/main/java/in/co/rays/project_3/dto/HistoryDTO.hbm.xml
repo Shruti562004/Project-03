@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="in.co.rays.project_3.dto.HistoryDTO" table="ST_HISTORY">
+
+		<id name="id" type="long" column="ID">
+			<generator class="native"></generator>
+		</id>
+
+		<property name="code" type="string">
+			<column name="CODE" length="50" />
+		</property>
+
+		<property name="name" type="string">
+			<column name="NAME" length="100" />
+		</property>
+
+		<property name="loginTime" type="timestamp">
+			<column name="LOGIN_TIME" />
+		</property>
+
+		<property name="status" type="string">
+			<column name="STATUS" length="50" />
+		</property>
+
+		<!-- BaseDTO Fields -->
+
+		<property name="createdBy" type="string">
+			<column name="CREATED_BY" length="100" />
+		</property>
+
+		<property name="modifiedBy" type="string">
+			<column name="MODIFIED_BY" length="100" />
+		</property>
+
+		<property name="createdDatetime" type="timestamp">
+			<column name="CREATED_DATETIME" />
+		</property>
+
+		<property name="modifiedDatetime" type="timestamp">
+			<column name="MODIFIED_DATETIME" />
+		</property>
+
+	</class>
+
+</hibernate-mapping>

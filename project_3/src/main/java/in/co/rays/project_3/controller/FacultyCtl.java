@@ -49,7 +49,7 @@ public class FacultyCtl extends BaseCtl {
 			request.setAttribute("courseList", li);
 			request.setAttribute("subjectList", list);
 
-		} catch (Exception e) {
+		} catch (ApplicationException e) {
 			e.printStackTrace();
 		}
 

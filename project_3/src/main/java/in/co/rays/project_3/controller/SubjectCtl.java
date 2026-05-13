@@ -41,7 +41,7 @@ public class SubjectCtl extends BaseCtl {
 		try {
 			List list = model.list();
 			request.setAttribute("courseList", list);
-		} catch (Exception e) {
+		} catch (ApplicationException e) {
 			log.error(e);
 			e.printStackTrace();
 		}

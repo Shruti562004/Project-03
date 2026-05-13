@@ -295,5 +295,19 @@ public ProfileModelInt getProfileModel() {
 	return ProfileModel;
 }
 
+
+public HistoryModelInt getHistoryModel() {
+	HistoryModelInt  HistoryModel= (HistoryModelInt) modelCache.get("HistoryModel");
+	if (HistoryModel == null) {
+		if ("Hibernate".equals(DATABASE)) {
+			HistoryModel = new HistoryModelHibImp();
+
+		}
+		
+		modelCache.put("HistoryModel", HistoryModel);
+	}
+	return HistoryModel;
+}
+
 }
 

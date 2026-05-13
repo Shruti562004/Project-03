@@ -190,5 +190,15 @@ public String PLACEMENT_VIEW = PAGE_FOLDER + "/PlacementView.jsp";
 	public String   PROFILE_LIST_VIEW = PAGE_FOLDER + "/ProfileListView.jsp";
 	
 	public String   PROFILE_LIST_CTL = APP_CONTEXT + "/ctl/ProfileListCtl";
+	
+	
+	   public String HISTORY_VIEW = PAGE_FOLDER + "/HistoryView.jsp";
+		
+		public String   HISTORY_CTL = APP_CONTEXT + "/ctl/HistoryCtl";
+		
+		public String   HISTORY_LIST_VIEW = PAGE_FOLDER + "/HistoryListView.jsp";
+		
+		public String   HISTORY_LIST_CTL = APP_CONTEXT + "/ctl/HistoryListCtl";
+
 
 }

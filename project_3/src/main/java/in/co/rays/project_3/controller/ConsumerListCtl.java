@@ -39,8 +39,9 @@ public class ConsumerListCtl extends BaseCtl {
 			List list = model.list();
 			request.setAttribute("ConsumerList", list);
 
-		} catch (Exception e) {
-
+		} catch (ApplicationException e) {
+			log.error(e);
+			e.printStackTrace();
 		}
 	}
 
@@ -50,7 +51,7 @@ public class ConsumerListCtl extends BaseCtl {
 
 		ConsumerDTO dto = new ConsumerDTO();
 		// bean.setName(request.getParameter("name"));
-	dto.setCode(request.getParameter("code"));
+		dto.setCode(request.getParameter("code"));
 		dto.setGroup(request.getParameter("group"));
 		dto.setName(request.getParameter("name"));
 		dto.setStatus(request.getParameter("status"));
@@ -101,6 +102,9 @@ public class ConsumerListCtl extends BaseCtl {
 			log.error(e);
 			ServletUtility.handleException(e, request, response);
 			return;
+		} catch (Exception e) {
+
+			e.printStackTrace();
 		}
 
 		log.debug("Consumer list do get end");
@@ -185,6 +189,8 @@ public class ConsumerListCtl extends BaseCtl {
 			ServletUtility.handleException(e, request, response);
 			return;
 		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("exception");
 		}
 
 		log.debug("Consumer list do post end");

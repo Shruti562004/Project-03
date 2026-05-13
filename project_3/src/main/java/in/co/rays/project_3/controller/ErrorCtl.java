@@ -231,6 +231,10 @@ public class ErrorCtl extends BaseCtl {
 		if (ctl.endsWith(ORSView.PROFILE_LIST_CTL))
 
 			return ORSView.PRODUCT_LIST_VIEW;
+		
+		if (ctl.endsWith(ORSView.HISTORY_LIST_CTL))
+
+			return ORSView.HISTORY_LIST_VIEW;
 
 		return ORSView.ERROR_VIEW;
 

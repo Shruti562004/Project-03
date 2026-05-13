@@ -78,5 +78,9 @@
 				
 				<mapping
 			resource="in/co/rays/project_3/hbm/ProfileDTO.hbm.xml" />
+			
+					
+				<mapping
+			resource="in/co/rays/project_3/hbm/HistoryDTO.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
