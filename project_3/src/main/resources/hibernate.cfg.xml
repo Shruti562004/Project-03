@@ -49,8 +49,7 @@
 			resource="in/co/rays/project_3/hbm/SubjectDTO.hbm.xml" />
 
 
-		<mapping
-			resource="in/co/rays/project_3/hbm/CateringDTO.hbm.xml" />
+		
 
 		<mapping
 			resource="in/co/rays/project_3/hbm/Appointment.hbm.xml" />
