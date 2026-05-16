@@ -199,14 +199,6 @@ public String PLACEMENT_VIEW = PAGE_FOLDER + "/PlacementView.jsp";
 		public String   HISTORY_LIST_VIEW = PAGE_FOLDER + "/HistoryListView.jsp";
 		
 		public String   HISTORY_LIST_CTL = APP_CONTEXT + "/ctl/HistoryListCtl";
-		
-		   public String CATERING_VIEW = PAGE_FOLDER + "/CateringView.jsp";
-			
-			public String   CATERING_CTL = APP_CONTEXT + "/ctl/CateringCtl";
-			
-			public String   CATERING_LIST_VIEW = PAGE_FOLDER + "/CateringListView.jsp";
-			
-			public String   CATERING_LIST_CTL = APP_CONTEXT + "/ctl/CateringListCtl";
-
+	
 
 }
