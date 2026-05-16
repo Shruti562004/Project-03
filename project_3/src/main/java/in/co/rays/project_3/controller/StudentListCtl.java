@@ -39,8 +39,8 @@ public class StudentListCtl extends BaseCtl {
 		try {
 			List list = model.list();
 			request.setAttribute("collegeList", list);
-		} catch (Exception e) {
-
+		} catch (ApplicationException e) {
+      e.printStackTrace();
 		}
 	}
 

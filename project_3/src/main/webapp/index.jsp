@@ -10,13 +10,13 @@
 }
 
 body {
-	background-image: url('img/landscape.jpg');
+	background-image: url('img/wall.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 </style>
 <body class="img-fluids">
-	<div class="p1">
+	<div class.="p1">
 		<h1 align="Center">
 			<img src="img/custom.png" width="318" height="120" border="0"> 
 		</h1>

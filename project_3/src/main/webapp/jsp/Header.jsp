@@ -28,7 +28,7 @@
 
 <style type="text/css">
 .aj {
-	background-image: linear-gradient(135deg, #0b132b, #0f2a44, #09101f, #000);
+background: linear-gradient(90deg, #2b1055, #000000);
 }
 
 
@@ -314,7 +314,17 @@
 							class="fa fa-user-friends"></i>History  List</a>
 					</div></li>
 					
-				
+				<li class="nav-item dropdown" style="padding-left: 5px"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Catering</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.CATERING_CTL%>"><i
+							class="fa fa-user-tie"></i>Add Catering</a> <a class="dropdown-item"
+							href="<%=ORSView.CATERING_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Catering  List</a>
+					</div></li>
 				<%
 					}
 					}

@@ -51,11 +51,16 @@ i.css {
 							<%
 								long id = DataUtility.getLong(request.getParameter("id"));
 
-								if (dto.getId() != null) {
+								if (dto.getName()!=null && dto.getId() != null) {
 							%>
-							<h3 class="text-center default-text text-primary">Update
+
+						<h3 class="text-center default-text text-primary">Update
 								Notification</h3>
-							<%
+	
+	
+	+
+	
+						<%
 								} else {
 							%>
 							<h3 class="text-center default-text text-primary">Add Notification</h3>
@@ -176,7 +181,7 @@ i.css {
 								</div>
 								</br>
 								<%
-									if (id > 0) {
+								if (dto.getName()!=null && dto.getId() != null) {
 								%>
 								<div class="text-center">
 

@@ -171,19 +171,6 @@ public final class ModelFactory {
 		return facultyModel;
 	}
 	
-	//usecase
-	public CateringModelInt getCateringModel() {
-		CateringModelInt cateringModel = (CateringModelInt) modelCache.get("cateringModel");
-		if (cateringModel == null) {
-			if ("Hibernate".equals(DATABASE)) {
-				cateringModel = new CateringModelHibImp();
-
-			}
-			
-			modelCache.put("collegeModel", cateringModel);
-		}
-		return cateringModel;
-	}
 	
 
 

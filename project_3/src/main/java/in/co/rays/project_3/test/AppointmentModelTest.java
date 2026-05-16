@@ -1,5 +1,6 @@
 package in.co.rays.project_3.test;
 
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,8 +15,7 @@ import in.co.rays.project_3.exception.ApplicationException;
 import in.co.rays.project_3.exception.DuplicateRecordException;
 import in.co.rays.project_3.model.AppointmentModelHibImp;
 import in.co.rays.project_3.model.AppointmentModelInt;
-import in.co.rays.project_3.model.CateringModelHibImp;
-import in.co.rays.project_3.model.CateringModelInt;
+
 
 public class AppointmentModelTest {
 	

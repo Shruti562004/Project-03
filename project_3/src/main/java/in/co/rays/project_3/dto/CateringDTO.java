@@ -4,7 +4,7 @@ public class CateringDTO extends BaseDTO {
 	
 	private String vendorName;
 	private String menuType;
-	private String cost;
+	private int cost;
 	public String getVendorName() {
 		return vendorName;
 	}
@@ -17,21 +17,22 @@ public class CateringDTO extends BaseDTO {
 	public void setMenuType(String menuType) {
 		this.menuType = menuType;
 	}
-	public String getCost() {
+	public int getCost() {
 		return cost;
 	}
-	public void setCost(String cost) {
+	public void setCost(int cost) {
 		this.cost = cost;
 	}
 	@Override
 	public String getKey() {
 		// TODO Auto-generated method stub
-		return null;
+		return menuType;
 	}
 	@Override
 	public String getValue() {
 		// TODO Auto-generated method stub
-		return null;
+		return menuType;
 	}
+	
 
 }

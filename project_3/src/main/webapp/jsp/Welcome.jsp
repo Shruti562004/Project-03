@@ -9,7 +9,7 @@
 <style>
 .p4 {
 	background-image:
-		url('<%=ORSView.APP_CONTEXT%>/img/pro32.jpg');
+		url('<%=ORSView.APP_CONTEXT%>/img/custom.jpg');
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
@@ -28,7 +28,7 @@
 	</div>
 	<div class="text-cs1">
 		<center>
-			<h1 style="padding-top: 10%; color: white">
+			<h1 style="padding-top: 10%; color: blue">
 				<b class="cl">" Welcome to online result system "</b>
 			</h1>
 		</center>
