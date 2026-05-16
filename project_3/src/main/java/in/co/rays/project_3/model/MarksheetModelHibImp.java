@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.exception.JDBCConnectionException;
 
 import in.co.rays.project_3.dto.MarksheetDTO;
 import in.co.rays.project_3.dto.StudentDTO;
@@ -142,9 +143,11 @@ public class MarksheetModelHibImp implements MarksheetModelInt {
 			}
 			list = criteria.list();
 
-		} catch (Exception e) {
+		} catch (JDBCConnectionException e) {
+			throw e;
+		} catch (HibernateException e) {
 
-			throw new ApplicationException("Exception in  Marksheet List" + e.getMessage());
+			throw new ApplicationException("Exception : Exception in  role list");
 		} finally {
 			session.close();
 		}

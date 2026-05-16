@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.exception.JDBCConnectionException;
 
 import in.co.rays.project_3.dto.CollegeDTO;
 import in.co.rays.project_3.dto.StudentDTO;
@@ -159,17 +160,16 @@ public class StudentModelHibImp implements StudentModelInt {
 	            }
 
 	            list = criteria.list();
-	        } catch (HibernateException e) {
-	           
-	            throw new ApplicationException(
-	                    "Exception : Exception in  Student list");
-	        } finally {
-	            session.close();
-	        }
+	        }catch (JDBCConnectionException e) {
+				throw e;
+			} catch (HibernateException e) {
 
-	       
-	        return list;
-	}
+				throw new ApplicationException("Exception : Exception in  role list");
+			} finally {
+				session.close();
+			}
+			return list;
+		}
 
 	public List search(StudentDTO dto) throws ApplicationException {
 		// TODO Auto-generated method stub

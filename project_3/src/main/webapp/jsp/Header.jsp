@@ -314,7 +314,7 @@ background: linear-gradient(90deg, #2b1055, #000000);
 							class="fa fa-user-friends"></i>History  List</a>
 					</div></li>
 					
-			
+				
 				<%
 					}
 					}
