@@ -53,31 +53,21 @@ public class ErrorCtl extends BaseCtl {
 	}
 
 	private void process(HttpServletRequest request, HttpServletResponse response)
-
 			throws IOException, ServletException {
 
-		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR); // 500
-
 		String lastCtl = (String) request.getAttribute("javax.servlet.error.request_uri");
-
 		String view = getViewFromCtl(lastCtl);
 
-		ServletUtility.setErrorMessage("Database server down please check!!!", request);
-
+		ServletUtility.setErrorMessage("Database server down!!!", request);
 		if (lastCtl != null && lastCtl.contains("ListCtl")) {
 
 			if (ServletUtility.getList(request) == null) {
-
 				ServletUtility.setList(new java.util.ArrayList(), request);
-
 			}
 
 			request.setAttribute("pageNo", 1);
-
 			request.setAttribute("pageSize", 10);
-
 			request.setAttribute("nextListSize", 0);
-
 		}
 
 		ServletUtility.forward(view, request, response);
@@ -235,6 +225,12 @@ public class ErrorCtl extends BaseCtl {
 		if (ctl.endsWith(ORSView.HISTORY_LIST_CTL))
 
 			return ORSView.HISTORY_LIST_VIEW;
+		
+
+		if (ctl.endsWith(ORSView.INVENTORY_LIST_CTL))
+
+			return ORSView.INVENTORY_LIST_VIEW;
+
 
 		return ORSView.ERROR_VIEW;
 

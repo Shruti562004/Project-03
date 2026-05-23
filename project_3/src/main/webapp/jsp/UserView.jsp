@@ -12,7 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>User view</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width'=device-width, initial-scale=1">
 <style type="text/css">
 i.css {
 	border: 2px solid #8080803b;
@@ -54,11 +54,10 @@ i.css {
 				<div class="col-md-4 mb-4">
 					<div class="card input-group-addon">
 						<div class="card-body">
-
 							<%
 								long id = DataUtility.getLong(request.getParameter("id"));
 
-								if (dto.getFirstName() != null && dto.getId() > 0) {
+								if (dto != null && dto.getId() > 0) {
 							%>
 							<h3 class="text-center default-text text-primary">Update
 								User</h3>
@@ -148,7 +147,7 @@ i.css {
 								<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("lastName", request)%></font></br>
 
 								<%
-									if (dto.getFirstName() != null && id > 0) {
+									if (dto != null && dto.getId() > 0) {
 								%>
 								<input type="hidden" name="password"
 									value="<%=DataUtility.getStringData(dto.getPassword())%>">
@@ -279,8 +278,7 @@ i.css {
 								</div>
 								<font color="red" class="pl-sm-5"> <%=ServletUtility.getErrorMessage("dob", request)%></font></br>
 								<%
-								
-									if (dto.getFirstName() != null && dto.getId() > 0) {
+									if (dto != null && dto.getId() > 0) {
 								%>
 
 								<div class="text-center">

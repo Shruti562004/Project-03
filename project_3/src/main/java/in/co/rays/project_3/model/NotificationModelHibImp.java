@@ -189,7 +189,7 @@ public class NotificationModelHibImp implements NotificationModelInt{
 		try {
 			session = HibDataSource.getSession();
 			Criteria criteria = session.createCriteria(NotificationDTO.class);
-			if (dto.getId() > 0) {
+			if (dto!=null && dto.getId() > 0) {
 				criteria.add(Restrictions.eq("id", dto.getId()));
 
 			}

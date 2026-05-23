@@ -51,7 +51,7 @@ i.css {
 							<%
 								long id = DataUtility.getLong(request.getParameter("id"));
 
-								if (dto.getId() != null) {
+							if (dto != null && dto.getId() > 0) {
 							%>
 							<h3 class="text-center default-text text-primary">Update
 								Appointment</h3>
@@ -154,7 +154,7 @@ i.css {
 								</div>
 								</br>
 								<%
-									if (id > 0) {
+								if (dto != null && dto.getId() > 0) {
 								%>
 								<div class="text-center">
 

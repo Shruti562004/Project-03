@@ -193,7 +193,7 @@ public class UserModelHibImp implements UserModelInt {
 			session = HibDataSource.getSession();
 			Criteria criteria = session.createCriteria(UserDTO.class);
 			if (dto != null) {
-				if (dto.getId() != null) {
+				if (dto.getId() != null && dto.getId() > 0) {
 					criteria.add(Restrictions.like("id", dto.getId()));
 				}
 				if (dto.getFirstName() != null && dto.getFirstName().length() > 0) {
@@ -232,7 +232,9 @@ public class UserModelHibImp implements UserModelInt {
 				criteria.setMaxResults(pageSize);
 			}
 			list = (ArrayList<UserDTO>) criteria.list();
+
 		} catch (HibernateException e) {
+			e.printStackTrace();
 			throw new ApplicationException("Exception in user search");
 		} finally {
 			session.close();
@@ -242,7 +244,7 @@ public class UserModelHibImp implements UserModelInt {
 	}
 
 	public UserDTO authenticate(String login, String password) throws ApplicationException {
-		
+
 		Session session = null;
 		UserDTO dto = null;
 		session = HibDataSource.getSession();

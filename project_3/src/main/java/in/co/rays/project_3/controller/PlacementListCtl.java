@@ -45,7 +45,7 @@ public class PlacementListCtl extends BaseCtl {
 		dto.setName(DataUtility.getString(request.getParameter("name")));
 		dto.setCoordinates(DataUtility.getString(request.getParameter("coordinates")));
 		dto.setScale(DataUtility.getString(request.getParameter("scale")));
-		dto.setScale(DataUtility.getString(request.getParameter("rotation")));
+		dto.setRotation(DataUtility.getString(request.getParameter("rotation")));
 		populateBean(dto, request);
 
 		log.debug("ctl populate bean end");

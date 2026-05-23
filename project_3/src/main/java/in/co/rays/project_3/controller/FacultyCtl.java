@@ -216,6 +216,7 @@ public class FacultyCtl extends BaseCtl {
 
 					try {
 						model.add(dto);
+						dto.setId(0L);
 						ServletUtility.setSuccessMessage("Data is successfully saved", request);
 					} catch (ApplicationException e) {
 						log.error(e);

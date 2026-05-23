@@ -166,7 +166,7 @@ public class MarksheetModelHibImp implements MarksheetModelInt {
 		try {
 			session = HibDataSource.getSession();
 			Criteria criteria = session.createCriteria(MarksheetDTO.class);
-			if (dto.getId() > 0) {
+			if (dto.getId()!=null && dto.getId() > 0) {
 				criteria.add(Restrictions.eq("id", dto.getId()));
 
 			}

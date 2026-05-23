@@ -63,18 +63,20 @@
 				Iterator<StudentDTO> it = list.iterator();
 				if (list.size() != 0) {
 			%>
-
 			<center>
-				<h1 class="text-primary font-weight-bold pt-3"><font color="black">Student List</h1></font>
+				<h1 class="text-dark font-weight-bold pt-3">
+					<font color="black">Student List 
+				</h1>
+				</font>
 			</center>
 
+			</br>
 			<div class="row">
 				<div class="col-md-4"></div>
 
 				<%
 					if (!ServletUtility.getSuccessMessage(request).equals("")) {
 				%>
-
 				<div class="col-md-4 alert alert-success alert-dismissible"
 					style="background-color: #80ff80">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -205,9 +207,28 @@
 					System.out.println("user list view list.size==0");
 			%>
 			<center>
-				<h1 class="text-primary font-weight-bold pt-3">Student List</h1>
+				<h1 class="text-dark font-weight-bold pt-3">Student List</h1>
 			</center>
-			</br> </br>
+			<div class="row">
+				<div class="col-md-4"></div>
+
+				<%
+					if (!ServletUtility.getErrorMessage(request).equals("")) {
+				%>
+				<div class="col-md-4 alert alert-danger alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<h4>
+						<font color="red"> <%=ServletUtility.getErrorMessage(request)%>
+						</font>
+					</h4>
+				</div>
+				<%
+					}
+				%>
+
+				<div class="col-md-4"></div>
+			</div>
+			
 			<div style="padding-left: 48%;">
 				<input type="submit" name="operation" class="btn btn-primary btn-md"
 					style="font-size: 17px" value="<%=StudentListCtl.OP_BACK%>">

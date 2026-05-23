@@ -190,10 +190,12 @@ public class MarksheetCtl extends BaseCtl {
 			try {
 				if (id > 0) {
 					dto.setId(id);
+				
 					model.update(dto);
 					ServletUtility.setSuccessMessage("Data is successfully Updated", request);
 				} else {
 					model.add(dto);
+					dto.setId(0L);
 					ServletUtility.setSuccessMessage("Data is successfully saved", request);
 				}
 				ServletUtility.setDto(dto, request);

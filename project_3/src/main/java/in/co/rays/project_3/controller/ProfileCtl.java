@@ -147,7 +147,7 @@ public class ProfileCtl extends BaseCtl {
 
 				long pk = model.add(dto);
 
-				dto.setId(pk);
+				dto.setId(0L);
 
 				ServletUtility.setSuccessMessage(
 						"Profile Added Successfully", request);

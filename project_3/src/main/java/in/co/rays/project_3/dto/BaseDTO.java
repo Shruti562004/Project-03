@@ -17,7 +17,7 @@ public abstract class BaseDTO implements Serializable, Comparable<BaseDTO>, Drop
 		 */
 	private static final long serialVersionUID = 1L;
 
-	protected Long id;
+	protected Long id = 0L;
 	protected String createdBy;
 	protected String modifiedBy;
 	protected Timestamp createdDatetime;

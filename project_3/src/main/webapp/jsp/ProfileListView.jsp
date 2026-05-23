@@ -49,9 +49,7 @@ background-repeat: no-repeat;
 
 			<jsp:useBean id="dto" class="in.co.rays.project_3.dto.ProfileDTO"
 				scope="request"></jsp:useBean>
-			<%
-				List list1 = (List) request.getAttribute("ProfileList");
-			%>
+			
 			<%
 				int pageNo = ServletUtility.getPageNo(request);
 				int pageSize = ServletUtility.getPageSize(request);
@@ -107,13 +105,13 @@ background-repeat: no-repeat;
 
 						<div class="col-sm-2"></div>
 						<div class="col-sm-3">
-							
-						</div>
+					
+				</div>
 						<div class="col-sm-3">
 						
-							<input class="form-control" type="text" name="code"
-							placeholder="Enter code" class="p1"
-							value="<%=ServletUtility.getParameter("code", request)%>">
+							<input class="form-control" type="text" name="name"
+							placeholder="Enter name" class="p1"
+							value="<%=ServletUtility.getParameter("name", request)%>">
 							
 							
 						</div>
@@ -149,6 +147,7 @@ background-repeat: no-repeat;
 									<th class="text">Name</th>
 									<th class="text">Number</th>
 									<th class="text">Status</th>
+									<th class="text">Rotation</th>
 									<th class="text">Edit</th>
 								</tr>
 							</thead>
@@ -166,6 +165,7 @@ background-repeat: no-repeat;
 									<td align="center"><%=dto.getName()%></td>
 									<td align="center"><%=dto.getNumber()%></td>
 										<td align="center"><%=dto.getStatus()%></td>
+										
 									<td align="center"><a href="ProfileCtl?id=<%=dto.getId()%>">Edit</a></td>
 								</tr>
 							</tbody>

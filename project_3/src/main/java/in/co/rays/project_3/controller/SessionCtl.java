@@ -140,8 +140,8 @@ public class SessionCtl extends BaseCtl {
 			try {
 
 				long pk = model.add(dto);
-
-				dto.setId(pk);
+                    
+				dto.setId(0L);
 
 				ServletUtility.setSuccessMessage(
 						"Session Added Successfully", request);

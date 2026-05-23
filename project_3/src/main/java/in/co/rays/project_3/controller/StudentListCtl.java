@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.dom4j.rule.Mode;
 
 import in.co.rays.project_3.dto.BaseDTO;
 import in.co.rays.project_3.dto.StudentDTO;
@@ -40,8 +39,11 @@ public class StudentListCtl extends BaseCtl {
 			List list = model.list();
 			request.setAttribute("collegeList", list);
 		} catch (ApplicationException e) {
-      e.printStackTrace();
+
+			ServletUtility.setErrorMessage("Database Server is Down !! Please try again later.", request);
+
 		}
+
 	}
 
 	@Override
@@ -65,6 +67,8 @@ public class StudentListCtl extends BaseCtl {
 			throws ServletException, IOException {
 
 		log.debug("StudentListCtl doGet Start");
+		
+		System.out.println("IN DOGET OF STUDETLISTCTL");
 
 		List list = null;
 		List next = null;
@@ -189,7 +193,6 @@ public class StudentListCtl extends BaseCtl {
 			}
 
 			ServletUtility.setList(list, request);
-
 			ServletUtility.setPageNo(pageNo, request);
 			ServletUtility.setPageSize(pageSize, request);
 			ServletUtility.forward(getView(), request, response);

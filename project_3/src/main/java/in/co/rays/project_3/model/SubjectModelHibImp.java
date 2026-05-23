@@ -145,7 +145,7 @@ public class SubjectModelHibImp implements SubjectModelInt {
 			session = HibDataSource.getSession();
 			Criteria criteria = session.createCriteria(SubjectDTO.class);
 			if (dto != null) {
-				if (dto.getId() != null) {
+				if (dto.getId() != null && dto.getId()>0) {
 					criteria.add(Restrictions.eq("id", dto.getId()));
 
 				}

@@ -122,6 +122,7 @@ public class RoleCtl extends BaseCtl {
 					try {
 						// long pk =
 						model.add(dto);
+						dto.setId(0L);
 						ServletUtility.setSuccessMessage("Successfully Saved", request);
 					} catch (ApplicationException e) {
 						log.error(e);

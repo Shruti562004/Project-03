@@ -296,5 +296,31 @@ public HistoryModelInt getHistoryModel() {
 	return HistoryModel;
 }
 
+
+public InventoryModelInt getInventoryModel() {
+	InventoryModelInt  InventoryModel= (InventoryModelInt) modelCache.get("InventoryModel");
+	if (InventoryModel == null) {
+		if ("Hibernate".equals(DATABASE)) {
+			InventoryModel = new InventoryModelHibImp();
+
+		}
+		
+		modelCache.put("InventoryModel",InventoryModel);
+	}
+	return InventoryModel;
+}
+
+public VideoModelInt getVideoModel() {
+	VideoModelInt  VideoModel= (VideoModelInt) modelCache.get("VideoModel");
+	if (VideoModel == null) {
+		if ("Hibernate".equals(DATABASE)) {
+			VideoModel = new VideoModelHibImp();
+
+		}
+		
+		modelCache.put("VideoModel",VideoModel);
+	}
+	return VideoModel;
+}
 }
 

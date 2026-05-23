@@ -314,6 +314,32 @@ background: linear-gradient(90deg, #2b1055, #000000);
 							class="fa fa-user-friends"></i>History  List</a>
 					</div></li>
 					
+					
+					<li class="nav-item dropdown" style="padding-left: 5px"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Inventory</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.INVENTORY_CTL%>"><i
+							class="fa fa-user-tie"></i>Add Inventory</a> <a class="dropdown-item"
+							href="<%=ORSView.INVENTORY_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Inventory  List</a>
+					</div></li>
+					
+						
+					<li class="nav-item dropdown" style="padding-left: 5px"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <font style="color: white;">Video</font>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<%=ORSView.VIDEO_CTL%>"><i
+							class="fa fa-user-tie"></i>Add Video</a> <a class="dropdown-item"
+							href="<%=ORSView.VIDEO_LIST_CTL%>"><i
+							class="fa fa-user-friends"></i>Video  List</a>
+					</div></li>
+				
 				
 				<%
 					}

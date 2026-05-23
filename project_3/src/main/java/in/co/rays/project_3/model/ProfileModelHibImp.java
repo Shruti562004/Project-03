@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.exception.JDBCConnectionException;
 
 import in.co.rays.project_3.dto.ProfileDTO;
 import in.co.rays.project_3.dto.StudentDTO;
@@ -117,15 +118,16 @@ public class ProfileModelHibImp implements ProfileModelInt {
 		
 	}
 	
-	catch (HibernateException e) {
+catch (JDBCConnectionException e) {
+		throw e;
+	} catch (HibernateException e) {
 
-	
+		throw new ApplicationException("Exception : Exception in  role list");
 	} finally {
 		session.close();
 	}
-	
 	return list;
-	}
+}
 
 	@Override
 	public List list() throws ApplicationException {

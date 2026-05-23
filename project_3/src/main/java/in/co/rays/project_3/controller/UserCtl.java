@@ -263,13 +263,12 @@ public class UserCtl extends BaseCtl {
 
 		populateBean(dto, request);
 
-
 		log.debug("UserRegistrationCtl Method populatedto Ended");
 
 		return dto;
 
 	}
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
 			throws IOException, ServletException {
@@ -330,7 +329,6 @@ public class UserCtl extends BaseCtl {
 
 			UserDTO dto = (UserDTO) populateDTO(request);
 
-
 			try {
 
 				if (id > 0) {
@@ -344,6 +342,7 @@ public class UserCtl extends BaseCtl {
 					try {
 
 						model.add(dto);
+						dto.setId(0L);
 
 						ServletUtility.setSuccessMessage("Data is successfully saved", request);
 

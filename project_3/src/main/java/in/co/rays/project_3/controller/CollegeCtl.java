@@ -142,7 +142,10 @@ public class CollegeCtl extends BaseCtl {
 				} else {
 					System.out.println("college add" + dto + "id...." + id);
 					// long pk
+				
 					model.add(dto);
+					dto.setId(0L);
+
 					ServletUtility.setSuccessMessage("Record Successfully Saved", request);
 				}
 

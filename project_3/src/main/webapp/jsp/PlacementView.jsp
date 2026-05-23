@@ -286,7 +286,7 @@
 						<div class="text-center">
 
 							<%
-								if (id > 0) {
+							if (dto != null && dto.getId() > 0) {
 							%>
 
 							<input type="submit"

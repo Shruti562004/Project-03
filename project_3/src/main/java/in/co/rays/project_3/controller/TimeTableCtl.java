@@ -178,6 +178,7 @@ public class TimeTableCtl extends BaseCtl {
 						 */
 						if (dto1 == null || dto2 == null || dto3 == null) {
 							model.add(dto);
+							dto.setId(0L);
 							ServletUtility.setDto(dto, request);
 							ServletUtility.setSuccessMessage("Data is successfully saved", request);
 						} else {

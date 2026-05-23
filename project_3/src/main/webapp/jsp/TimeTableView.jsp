@@ -64,8 +64,7 @@ i.css {
 						<div class="card-body">
 							<%
 								long id = DataUtility.getLong(request.getParameter("id"));
-
-								if (dto.getId() != null) {
+							if (dto!= null&& dto.getId()>0) {
 							%>
 							<h3 class="text-center text-primary">Update Time Table</h3>
 							<%
@@ -218,7 +217,7 @@ i.css {
 
 								</br>
 								<%
-									if (dto.getCourseName()!= null) {
+								if (dto!= null&& dto.getId()>0)  {
 								%>
 								<div class="text-center">
 									<input type="submit" name="operation"

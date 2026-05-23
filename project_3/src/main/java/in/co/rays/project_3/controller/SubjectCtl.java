@@ -148,6 +148,7 @@ public class SubjectCtl extends BaseCtl {
 					long pk;
 					try {
 						pk = model.add(dto);
+						dto.setId(0L);
 						ServletUtility.setSuccessMessage("Data in successfully saved", request);
 					} catch (ApplicationException e) {
 						log.error(e);

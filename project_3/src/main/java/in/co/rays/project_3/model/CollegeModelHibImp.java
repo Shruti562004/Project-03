@@ -73,17 +73,17 @@ public class CollegeModelHibImp implements CollegeModelInt {
 		CollegeDTO dtoExist = fingByName(dto.getName());
 
 		// Check if updated College already exist
-
-		if (dtoExist != null && dtoExist.getId() != dto.getId()) {
-			throw new DuplicateRecordException("College is already exist");
-		}
-
+		/*
+		 * if (dtoExist != null && dtoExist.getId() != dto.getId()) { throw new
+		 * DuplicateRecordException("College is already exist"); }
+		 */
 		try {
 			session = HibDataSource.getSession();
 			tx = session.beginTransaction();
+			System.out.println("before update");
 
 			session.saveOrUpdate(dto);
-
+			System.out.println("after update");
 			tx.commit();
 
 		} catch (HibernateException e) {
@@ -115,13 +115,18 @@ public class CollegeModelHibImp implements CollegeModelInt {
 			}
 			list = criteria.list();
 
-		} catch (JDBCConnectionException e) {
+		}catch (JDBCConnectionException e) {
+			
 			throw e;
-		} catch (HibernateException e) {
+		}
+		catch (HibernateException e) {
 
 			throw new ApplicationException("Exception : Exception in  College list");
 		} finally {
-			session.close();
+			if (session != null) {
+				
+				session.close();
+			}
 		}
 
 		return list;
@@ -169,21 +174,21 @@ public class CollegeModelHibImp implements CollegeModelInt {
 	}
 
 	public CollegeDTO findByPK(long pk) throws ApplicationException {
-
+		System.out.println("======" + pk + "----------------------------------");
 		Session session = null;
 		CollegeDTO dto = null;
 		try {
 			session = HibDataSource.getSession();
 
 			dto = (CollegeDTO) session.get(CollegeDTO.class, pk);
-
+			System.out.println(dto);
 		} catch (HibernateException e) {
 
-			throw new ApplicationException("Exception : Exception in getting College by pk");
+			throw new ApplicationException("Exception : Exception in getting course by pk");
 		} finally {
 			session.close();
 		}
-
+		System.out.println("++++" + dto);
 		return dto;
 	}
 
@@ -200,7 +205,7 @@ public class CollegeModelHibImp implements CollegeModelInt {
 			}
 		} catch (HibernateException e) {
 
-			throw new ApplicationException("Exception in getting College by name:" + e.getMessage());
+			throw new ApplicationException("Exception in getting User by Login " + e.getMessage());
 
 		} finally {
 			session.close();

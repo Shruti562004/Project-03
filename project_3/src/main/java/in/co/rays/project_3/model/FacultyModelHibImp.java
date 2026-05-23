@@ -186,7 +186,7 @@ public class FacultyModelHibImp implements FacultyModelInt{
             session = HibDataSource.getSession();
             Criteria criteria = session.createCriteria(FacultyDTO.class);
           if(dto!=null){
-            if (dto.getId() !=null) {
+        		if (dto.getId() != null && dto.getId()>0) {
                 criteria.add(Restrictions.eq("id", dto.getId()));
             }
             if (dto.getFirstName() != null && dto.getFirstName().length() > 0) {

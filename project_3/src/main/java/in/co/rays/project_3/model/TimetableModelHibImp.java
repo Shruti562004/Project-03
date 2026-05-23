@@ -156,7 +156,7 @@ public class TimetableModelHibImp implements TimetableModelInt {
 			session = HibDataSource.getSession();
 			Criteria criteria = session.createCriteria(TimetableDTO.class);
 			if (dto != null) {
-				if (dto.getId() != null) {
+				if (dto.getId() != null && dto.getId()>0) {
 					criteria.add(Restrictions.eq("id", dto.getId()));
 				}
 				if (dto.getCourseName() != null && dto.getCourseName().length() > 0) {

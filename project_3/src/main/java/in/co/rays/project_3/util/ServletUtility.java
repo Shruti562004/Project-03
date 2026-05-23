@@ -59,8 +59,10 @@ public class ServletUtility {
 	 */
 	public static void handleException(Exception e, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		String lastCtl = (String) request.getAttribute("ORIGINAL_CTL");
-		request.setAttribute("lastCtl", lastCtl);
+		
+		  String lastCtl = (String) request.getAttribute("ORIGINAL_CTL");
+		  request.setAttribute("lastCtl", lastCtl);
+		 
 		request.setAttribute("javax.servlet.error.exception", e);
 		RequestDispatcher rd = request.getRequestDispatcher(ORSView.ERROR_CTL);
 		rd.forward(request, response);

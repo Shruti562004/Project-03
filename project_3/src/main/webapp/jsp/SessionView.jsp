@@ -66,7 +66,7 @@
 					<div class="card-body">
 
 						<%
-							if (id > 0) {
+						if (dto != null && dto.getId() > 0) {
 						%>
 
 						<h3 class="text-center text-primary">Update Session</h3>
@@ -170,7 +170,7 @@
 						<div class="text-center">
 
 							<%
-								if (id > 0) {
+							if (dto != null && dto.getId() > 0) {
 							%>
 
 							<input type="submit" name="operation"

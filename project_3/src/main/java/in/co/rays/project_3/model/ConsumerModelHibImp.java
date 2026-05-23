@@ -146,7 +146,7 @@ public class ConsumerModelHibImp implements ConsumerModelInt {
 			Criteria criteria = session.createCriteria(ConsumerDTO.class);
 			if (dto != null) {
 
-				if (dto.getId() != null) {
+				if (dto.getId() != null && dto.getId()>0) {
 					criteria.add(Restrictions.eq("id", dto.getId()));
 				}
 				if (dto.getCode() != null && dto.getCode().length() > 0) {

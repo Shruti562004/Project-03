@@ -141,6 +141,7 @@ public class ConsumerCtl extends BaseCtl {
 					System.out.println("Consumer add" + dto + "id...." + id);
 					// long pk
 					model.add(dto);
+					dto.setId(0L);
 					ServletUtility.setSuccessMessage("Record Successfully Saved", request);
 				}
 

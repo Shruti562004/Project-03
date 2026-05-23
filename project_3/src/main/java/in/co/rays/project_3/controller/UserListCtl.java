@@ -82,6 +82,7 @@ public class UserListCtl extends BaseCtl {
 		try {
 
 			list = model.search(dto, pageNo, pageSize);
+			System.out.println("Search method start");
 
 			ArrayList<UserDTO> a = (ArrayList<UserDTO>) list;
 
@@ -89,9 +90,11 @@ public class UserListCtl extends BaseCtl {
 				
 			}
 			next = model.search(dto, pageNo + 1, pageSize);
+			
 			ServletUtility.setList(list, request);
 			if (list == null || list.size() == 0) {
 				ServletUtility.setErrorMessage("No record found ", request);
+				
 			}
 			if (next == null || next.size() == 0) {
 				request.setAttribute("nextListSize", 0);
@@ -111,7 +114,7 @@ public class UserListCtl extends BaseCtl {
 
 			e.printStackTrace();
 		}
-		log.debug("UserListCtl doPOst End");
+		log.debug("UserListCtl doGet End");
 	}
 
 	/**

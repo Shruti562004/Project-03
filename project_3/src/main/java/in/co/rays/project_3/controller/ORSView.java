@@ -199,6 +199,23 @@ public String PLACEMENT_VIEW = PAGE_FOLDER + "/PlacementView.jsp";
 		public String   HISTORY_LIST_VIEW = PAGE_FOLDER + "/HistoryListView.jsp";
 		
 		public String   HISTORY_LIST_CTL = APP_CONTEXT + "/ctl/HistoryListCtl";
-	
+		
+		   public String INVENTORY_VIEW = PAGE_FOLDER + "/InventoryView.jsp";
+			
+			public String  INVENTORY_CTL = APP_CONTEXT + "/ctl/InventoryCtl";
+			
+			public String  INVENTORY_LIST_VIEW = PAGE_FOLDER + "/InventoryListView.jsp";
+			
+			public String   INVENTORY_LIST_CTL = APP_CONTEXT + "/ctl/InventoryListCtl";
+			
+			
+
+			   public String VIDEO_VIEW = PAGE_FOLDER + "/VideoView.jsp";
+				
+				public String  VIDEO_CTL = APP_CONTEXT + "/ctl/VideoCtl";
+				
+				public String  VIDEO_LIST_VIEW = PAGE_FOLDER + "/VideoListView.jsp";
+				
+				public String   VIDEO_LIST_CTL = APP_CONTEXT + "/ctl/VideoListCtl";
 
 }

@@ -143,6 +143,8 @@ public class AppointmentCtl extends BaseCtl {
 
 					try {
 						model.add(dto);
+						dto.setId(0L);
+						
 						ServletUtility.setSuccessMessage("Data Successfully saved", request);
 						ServletUtility.setDto(dto, request);
 					} catch (ApplicationException e) {

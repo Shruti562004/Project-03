@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="in.co.rays.project_3.dto.VideoDTO" table="ST_VIDEO">
+
+		<id name="id" type="long" column="ID">
+			<generator class="native"></generator>
+		</id>
+
+		<property name="title" type="string" column="TITLE" />
+		
+		<property name="category" type="string" column="CATEGORY" />
+		
+		<property name="duration" type="int" column="DURATION" />
+		
+		<property name="views" type="int" column="VIEWS" />
+
+		<!-- BaseDTO Fields -->
+
+		<property name="createdBy" type="string" column="CREATED_BY" />
+		
+		<property name="modifiedBy" type="string" column="MODIFIED_BY" />
+		
+		<property name="createdDatetime" type="timestamp"
+			column="CREATED_DATETIME" />
+		
+		<property name="modifiedDatetime" type="timestamp"
+			column="MODIFIED_DATETIME" />
+
+	</class>
+
+</hibernate-mapping>
