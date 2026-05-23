@@ -291,7 +291,7 @@ background: linear-gradient(90deg, #2b1055, #000000);
 							class="fa fa-user-friends"></i>Placement  List</a>
 					</div></li>
 					
-					<li class="nav-item dropdown" style="padding-left: 5px"><a
+					<%-- <li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <font style="color: white;">Profile</font>
@@ -302,6 +302,7 @@ background: linear-gradient(90deg, #2b1055, #000000);
 							href="<%=ORSView.PROFILE_LIST_CTL%>"><i
 							class="fa fa-user-friends"></i>Profile  List</a>
 					</div></li>
+					--%>
 					<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"

@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.exception.JDBCConnectionException;
 
 import in.co.rays.project_3.dto.InventoryDTO;
 import in.co.rays.project_3.exception.ApplicationException;
@@ -143,17 +144,20 @@ public List list(int pageNo, int pageSize) throws ApplicationException {
 		}
 		list=criteria.list();
 	}
-	catch (HibernateException e) {
-		
-		  
-	    e.printStackTrace();
-	    throw new ApplicationException("Exception in Notification Add " + e.getMessage());
+	catch (JDBCConnectionException e) {
 
+		e.printStackTrace();
+
+	throw new ApplicationException("Database Server is Down");
+	} catch (HibernateException e) {
+
+		throw new ApplicationException("Exception in Student search");
 	} finally {
-	    if (session != null) {
-	        session.close();
-	    }
+
+		session.close();
+
 	}
+
 	return list;
 }
 
@@ -203,20 +207,22 @@ public List search(InventoryDTO dto, int pageNo, int pageSize) throws Applicatio
 		
 	}
 
-catch (HibernateException e) {
-	
-  
-    e.printStackTrace();
-    throw new ApplicationException("Exception in Notification Add " + e.getMessage());
+	catch (HibernateException e) {
 
-} finally {
-    if (session != null) {
-        session.close();
-    }
-}
-	
+		e.printStackTrace();
+
+		throw new ApplicationException("Database Server is Down");
+
+	} finally {
+
+		session.close();
+
+	}
+
 	return list;
 }
+
+
 
 @Override
 public InventoryDTO findByPK(long pk) throws ApplicationException {

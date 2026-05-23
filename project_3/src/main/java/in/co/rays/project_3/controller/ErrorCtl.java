@@ -231,7 +231,9 @@ public class ErrorCtl extends BaseCtl {
 
 			return ORSView.INVENTORY_LIST_VIEW;
 
+		if (ctl.endsWith(ORSView.VIDEO_LIST_CTL))
 
+			return ORSView.VIDEO_LIST_VIEW;
 		return ORSView.ERROR_VIEW;
 
 	}

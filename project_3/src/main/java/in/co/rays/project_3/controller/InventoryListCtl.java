@@ -39,10 +39,11 @@ public class InventoryListCtl extends BaseCtl {
 			List list = model.list();
 			request.setAttribute("collegeList", list);
 		} catch (ApplicationException e) {
-
-		}
+	        System.out.println("Exception in preload");
+	        e.printStackTrace();
+	        ServletUtility.setErrorMessage("Database Server is Down", request);
+	    }
 	}
-
 
 	@Override
 	protected BaseDTO populateDTO(HttpServletRequest request) {
@@ -109,9 +110,16 @@ public class InventoryListCtl extends BaseCtl {
 			ServletUtility.forward(getView(), request, response);
 
 		} catch (ApplicationException e) {
-			log.error(e);
-			ServletUtility.handleException(e, request, response);
-			return;
+
+		    log.error(e);
+
+		    ServletUtility.setErrorMessage(
+		            "Database Server is Down", request);
+
+		    ServletUtility.forward(
+		            getView(), request, response);
+
+		    return;
 		}
 		log.debug("InventoryListCtl doGet End");
 	}
@@ -202,9 +210,16 @@ public class InventoryListCtl extends BaseCtl {
 			ServletUtility.forward(getView(), request, response);
 
 		} catch (ApplicationException e) {
-			log.error(e);
-			ServletUtility.handleException(e, request, response);
-			return;
+
+		    log.error(e);
+
+		    ServletUtility.setErrorMessage(
+		            "Database Server is Down", request);
+
+		    ServletUtility.forward(
+		            getView(), request, response);
+
+		    return;
 		}
 		log.debug("InventoryListCtl doGet End");
 	}

@@ -41,10 +41,12 @@ public class InventoryCtl extends BaseCtl {
 			request.setAttribute("inventoryList", l);
 		}
 		catch (ApplicationException e) {
-			log.error(e);
-		}
-
+	        System.out.println("Exception in preload");
+	        e.printStackTrace();
+	        ServletUtility.setErrorMessage("Database Server is Down", request);
+	    }
 	}
+
 
 	@Override
 	protected boolean validate(HttpServletRequest request) {

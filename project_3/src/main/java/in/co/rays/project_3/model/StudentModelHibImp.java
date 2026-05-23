@@ -164,7 +164,7 @@ public class StudentModelHibImp implements StudentModelInt {
 
 			e.printStackTrace();
 
-			//throw new ApplicationException("Database Server is Down");
+		throw new ApplicationException("Database Server is Down");
 		} catch (HibernateException e) {
 
 			throw new ApplicationException("Exception in Student search");

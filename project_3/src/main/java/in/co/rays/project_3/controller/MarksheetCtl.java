@@ -38,17 +38,20 @@ public class MarksheetCtl extends BaseCtl {
 	private static Logger log = Logger.getLogger(MarksheetCtl.class);
 
 	protected void preload(HttpServletRequest request) {
-		
-		StudentModelInt model = ModelFactory.getInstance().getStudentModel();
-		try {
-			List li = model.list();
-			request.setAttribute("studenList", li);
-			System.out.println("add marksheet" + li);
 
-		} catch (ApplicationException e) {
-			e.printStackTrace();
-			log.error(e);
-		}
+	    System.out.println("Marksheet preload called");
+
+	    StudentModelInt model = ModelFactory.getInstance().getStudentModel();
+
+	    try {
+	        List li = model.list();
+	        request.setAttribute("studenList", li);
+
+	    } catch (ApplicationException e) {
+	        System.out.println("Exception in preload");
+	        e.printStackTrace();
+	        ServletUtility.setErrorMessage("Database Server is Down", request);
+	    }
 	}
 
 	protected boolean validate(HttpServletRequest request) {
