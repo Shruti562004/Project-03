@@ -322,5 +322,18 @@ public VideoModelInt getVideoModel() {
 	}
 	return VideoModel;
 }
+
+public HospitalModelInt getHospitalModel() {
+	HospitalModelInt  HospitalModel= (HospitalModelInt) modelCache.get("HospitalModel");
+	if (HospitalModel == null) {
+		if ("Hibernate".equals(DATABASE)) {
+			HospitalModel = new HospitalModelHibImp();
+
+		}
+		
+		modelCache.put("HospitalModel",HospitalModel);
+	}
+	return HospitalModel;
+}
 }
 

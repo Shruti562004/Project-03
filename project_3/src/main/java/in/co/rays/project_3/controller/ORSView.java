@@ -217,5 +217,13 @@ public String PLACEMENT_VIEW = PAGE_FOLDER + "/PlacementView.jsp";
 				public String  VIDEO_LIST_VIEW = PAGE_FOLDER + "/VideoListView.jsp";
 				
 				public String   VIDEO_LIST_CTL = APP_CONTEXT + "/ctl/VideoListCtl";
+				
+				   public String HOSPITAL_VIEW = PAGE_FOLDER + "/HospitalView.jsp";
+					
+					public String  HOSPITAL_CTL = APP_CONTEXT + "/ctl/HospitalCtl";
+					
+					public String  HOSPITAL_LIST_VIEW = PAGE_FOLDER + "/HospitalListView.jsp";
+					
+					public String   HOSPITAL_LIST_CTL = APP_CONTEXT + "/ctl/HospitalListCtl";
 
 }
