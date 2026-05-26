@@ -45,7 +45,11 @@ public class JasperCtl extends BaseCtl {
 		try {
 
 			ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.project_3.bundle.system");
+			String path = (System.getenv("DOCKER_ENV") == null)
+					? rb.getString("jasperctl")           // 💻 Manual
+					: "/reports/Collage.jrxml";           // 🐳 Docker
 
+			System.out.println("Loading report from: " + path);
 			InputStream jrxmlStream = new FileInputStream(rb.getString("jasperctl"));
 			
 			JasperReport jasperReport = JasperCompileManager.compileReport(jrxmlStream);
