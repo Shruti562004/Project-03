@@ -315,7 +315,7 @@ background: linear-gradient(90deg, #2b1055, #000000);
 							class="fa fa-user-friends"></i>History  List</a>
 					</div></li>
 					
-					
+					<!--  
 					<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -327,7 +327,7 @@ background: linear-gradient(90deg, #2b1055, #000000);
 							href="<%=ORSView.INVENTORY_LIST_CTL%>"><i
 							class="fa fa-user-friends"></i>Inventory  List</a>
 					</div></li>
-					
+					-->
 						
 					<li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -340,7 +340,7 @@ background: linear-gradient(90deg, #2b1055, #000000);
 							href="<%=ORSView.VIDEO_LIST_CTL%>"><i
 							class="fa fa-user-friends"></i>Video  List</a>
 					</div></li>
-				<li class="nav-item dropdown" style="padding-left: 5px"><a
+				<!--  <li class="nav-item dropdown" style="padding-left: 5px"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <font style="color: white;">Hospital</font>
@@ -350,7 +350,7 @@ background: linear-gradient(90deg, #2b1055, #000000);
 							class="fa fa-user-tie"></i>Add Hospital</a> <a class="dropdown-item"
 							href="<%=ORSView.HOSPITAL_LIST_CTL%>"><i
 							class="fa fa-user-friends"></i>Hospital  List</a>
-					</div></li>
+					</div></li>-->
 				
 				<%
 					}

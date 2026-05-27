@@ -34,12 +34,12 @@ public class VideoDTO extends BaseDTO {
 	@Override
 	public String getKey() {
 		// TODO Auto-generated method stub
-		return null;
+		return title;
 	}
 	@Override
 	public String getValue() {
 		// TODO Auto-generated method stub
-		return null;
+		return title;
 	}
 	
 

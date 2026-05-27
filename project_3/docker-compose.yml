@@ -24,7 +24,9 @@ services:
       - mysql
     environment:
       - DATABASE_URL=jdbc:mysql://mysql:3306/project_3
-      - jasperctl=/home/vedic.jrxml
+      - JASPER_FILE=/app/reports/project.jrxml
+    volumes:
+      - "C:/Users/Lenovo/JaspersoftWorkspace/MyReports:/app/reports"
 networks:
   mynetwork:
     driver: bridge

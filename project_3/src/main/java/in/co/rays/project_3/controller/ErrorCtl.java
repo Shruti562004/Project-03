@@ -43,7 +43,7 @@ public class ErrorCtl extends BaseCtl {
 		process(request, response);
 
 	}
-
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 
 			throws IOException, ServletException {

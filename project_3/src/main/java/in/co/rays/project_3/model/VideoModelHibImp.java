@@ -131,7 +131,7 @@ public  class VideoModelHibImp implements VideoModelInt {
 			}
 		} catch (HibernateException e) {
 
-			throw new ApplicationException("Exception in getting User by Login " + e.getMessage());
+			throw new ApplicationException("Exception in getting  " + e.getMessage());
 
 		} finally {
 			session.close();

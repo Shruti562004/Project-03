@@ -35,6 +35,8 @@ i.css {
 		<%@include file="Header.jsp"%>
 	</div>
 	<div>
+	
+	
 		<jsp:useBean id="dto" class="in.co.rays.project_3.dto.VideoDTO"
 			scope="request"></jsp:useBean>
 
@@ -47,6 +49,8 @@ i.css {
 				<div class="col-md-4 mb-4">
 					<div class="card">
 						<div class="card-body">
+						
+	
 							<%
 								long id = DataUtility.getLong(request.getParameter("id"));
 							if (dto != null && dto.getId() > 0) {

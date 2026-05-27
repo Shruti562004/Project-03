@@ -1,6 +1,7 @@
 package in.co.rays.project_3.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,6 +32,20 @@ import in.co.rays.project_3.util.ServletUtility;
 public class VideoCtl extends BaseCtl {
 
 	private static Logger log = Logger.getLogger(VideoCtl.class);
+
+	protected void preload(HttpServletRequest request) {
+
+		VideoModelInt model = ModelFactory.getInstance().getVideoModel();
+
+		try {
+			List list = model.list();
+
+			request.setAttribute("VideoList", list);
+
+		} catch (Exception e) {
+			log.error(e);
+		}
+	}
 
 	protected boolean validate(HttpServletRequest request) {
 
@@ -174,7 +189,7 @@ public class VideoCtl extends BaseCtl {
 						return;
 					} catch (DuplicateRecordException e) {
 						ServletUtility.setDto(dto, request);
-						ServletUtility.setErrorMessage("Video  already exists", request);
+						ServletUtility.setErrorMessage("category  already exists", request);
 					}
 				}
 
