@@ -27,6 +27,7 @@
 		<%@include file="Header.jsp"%>
 	</div>
 	<div class="text-cs1">
+<h2>28 may</h2>
 		<center>
 			<h1 style="padding-top: 10%; color: blue">
 				<b class="cl">" Welcome to online result system "</b>
